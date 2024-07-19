@@ -8,6 +8,10 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 export class SidebarComponent {
 
   @ViewChild('wrapper') wrapper!: ElementRef;
+
+  // @ViewChild('operadoraSubmenu') operadoraSubmenu!: ElementRef
+  // @ViewChild('contratoSubmenu') contratoSubmenu!: ElementRef
+
   sidebarVisible = true;
 
   toggleSidebar() {
@@ -19,9 +23,10 @@ export class SidebarComponent {
     }
   }
 
-  toggleSubMenu(menuId: string) {
-    const submenu = document.getElementById(`${menuId}-submenu`);
+ 
+  toggleSubMenu(submenu: HTMLDivElement) {
     if (submenu) {
+      // submenu.nativeElement.classList.toggle('show');
       submenu.classList.toggle('show');
     }
   }
