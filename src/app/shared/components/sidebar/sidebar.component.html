@@ -1,0 +1,30 @@
+
+
+<div class="d-flex" id="wrapper" #wrapper>
+    <!-- Sidebar -->
+    <div class="bg-dark text-light" id="sidebar-wrapper">
+      <div class="sidebar-heading py-3 text-center">Mi Aplicación</div>
+      <div class="list-group list-group-flush">
+        <a class="list-group-item list-group-item-action bg-dark text-light"  (click)="toggleSubMenu('vehiculo')" aria-expanded="false" aria-controls="vehiculo-submenu">
+          <i class="fas fa-chevron-circle-right">Operadora</i> 
+        </a>
+        <div class="collapse" id="vehiculo-submenu">
+          <a routerLink='vehiculo-administracion' routerLinkActive='active' class="list-group-item list-group-item-action bg-secondary text-light"><i class="fas fa-car"></i> Registro Operadora</a>
+          <a routerLink='licencias_listado' routerLinkActive='active' class="list-group-item list-group-item-action bg-secondary text-light"><i class="fas fa-id-card"></i> Edición Operadora</a>
+          <a routerLink='dri_tra_extintor_listado' routerLinkActive='active' class="list-group-item list-group-item-action bg-secondary text-light"><i class="fas fa-fire-extinguisher"></i> Visualizar Operadoras</a>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Page Content -->
+
+    //TODO: EL COMPONENTE HEDER VA AQUI
+    <div id="page-content-wrapper">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="btn btn-primary" id="menu-toggle" (click)="toggleSidebar()">Toggle Sidebar</button>
+      </nav>
+      <div class="container-fluid">
+        <h1 class="mt-4">Contenido Principal</h1>
+      </div>
+    </div>
+  </div>
