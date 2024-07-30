@@ -10,3 +10,8 @@ export interface Canton {
     viewValue: string,
     value: number
 } 
+export interface Parroquia {
+    idParroquia:number,
+    viewValue: string,
+    value: number
+} 

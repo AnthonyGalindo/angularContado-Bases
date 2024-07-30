@@ -19,6 +19,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {  MatDatepickerModule } from '@angular/material/datepicker';
+import {  MatNativeDateModule  } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 
@@ -46,7 +49,10 @@ import { MatSortModule } from '@angular/material/sort';
     MatToolbarModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule 
+    MatSortModule,
+    MatDatepickerModule, 
+    MatNativeDateModule ,
+    MatCheckboxModule
     
   ]
 })

@@ -13,7 +13,8 @@ import { MaterialModule } from '../material/material.module';
   declarations: [
     ContGenerarComponent,
     ContCambiarComponent,
-    ContVisualizarComponent
+    ContVisualizarComponent,
+
   ],
   imports: [
     CommonModule,
