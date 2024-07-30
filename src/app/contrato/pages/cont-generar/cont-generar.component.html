@@ -1,0 +1,11 @@
+
+
+<mat-form-field class="mt-2 ml-2 w-4">
+    <mat-label>Lista Representantes</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let prov of provincias" [value]="prov.value">
+        {{prov.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+

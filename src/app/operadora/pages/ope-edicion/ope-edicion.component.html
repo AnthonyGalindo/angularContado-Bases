@@ -1,1 +1,106 @@
-<p>ope-editar works!</p>
+<div class="">
+  <ul type="none" class="flex flex-row w-full m-0 p-0 ">
+    <li (click)="changeVentana(true)" class="w-6 p-2 m-2 edit-operadora">
+      Editar Datos Operadora
+    </li>
+    <li (click)="changeVentana(false)" class="w-6 p-2 m-2 edit-representante"  ngClass="" >
+      Cambiar Representante Operadora
+    </li>
+  </ul>
+</div>
+
+<div class="mt-3">
+  <!-- <ope-registro-formulario   *ngIf="ventana; else otraVentana">
+  </ope-registro-formulario> -->
+
+  <form  [formGroup]="operadoraEdicionForm" *ngIf="ventana; else otraVentana" (ngSubmit)="SendEdicionOperadora()"  autocomplete="off" >
+    <div
+      class="bg-gradient agrupador-representante p-2 w-full flex flex-row mb-4"
+    >
+      
+      <div class="w-4 p-2 mr-2 content-representante">
+        <h3 class="text-white text-center pt-2 w-full">Registro Representante</h3>
+        <mat-form-field class="w-full p-2">
+          <mat-label>Nombres</mat-label>
+          <input  matInput placeholder="Nombres del representante"
+          formControlName = "nombres" />
+        </mat-form-field>
+        
+        <mat-form-field class="w-full p-2">
+          <mat-label>Apellidos</mat-label>
+          <input  matInput placeholder="Apellidos del representante" 
+          formControlName = "apellidos" />
+        </mat-form-field>
+  
+        <mat-form-field class="w-full p-2">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" 
+          formControlName = "email" />
+        </mat-form-field>
+  
+        <mat-form-field class="w-full p-2">
+          <mat-label>Telefono</mat-label>
+          <input  matInput placeholder="telefono" 
+          formControlName = "telefono" />
+        </mat-form-field>
+      </div>
+  
+      <div class="w-8 p-2 text-center content-operadora mat-elevation-z8">
+        <h3 class="text-center text-white pt-2">Registro Operadora</h3>
+  
+        <mat-form-field class="w-5 m-2">
+          <mat-label>Nombre de la Operadora</mat-label>
+          <input  matInput placeholder="Nombre de la operadora"  
+          formControlName = "nombreOpe" />
+        </mat-form-field>
+  
+        <mat-form-field class="w-5 m-2">
+          <mat-label>Ruc de la Operadora</mat-label>
+          <input type="text" matInput placeholder="Ruc de la operadora" 
+          formControlName = "rucOpe"  />
+        </mat-form-field>
+  
+        <mat-form-field class="w-5 m-2">
+          <mat-label>Telefono 1</mat-label>
+          <input type="text" matInput placeholder="telefono 1"
+          formControlName = "telefono1Ope"  />
+        </mat-form-field>
+  
+        <mat-form-field class="w-5 m-2">
+          <mat-label>Telefono 2</mat-label>
+          <input type="text" matInput placeholder="telefono 2"
+          formControlName = "telefono2Ope"  />
+        </mat-form-field>
+  
+        <mat-form-field class="w-8 m-2">
+          <mat-label>Dirección</mat-label>
+          <input type="text" matInput placeholder="Dirección" 
+           formControlName = "direccionOpe" />
+        </mat-form-field>
+  
+        <mat-form-field class="w-8 m-2">
+          <mat-label>Observación</mat-label>
+          <textarea
+            matInput
+            placeholder="Escriba la observación aquí..."
+            formControlName="observacionOpe" >
+          </textarea>
+        </mat-form-field>
+      </div>
+    
+    </div>
+  
+    <button  type="submit" class="ml-2 btn-naranja" mat-button mat-flat-button color="primary">
+      <mat-icon>save</mat-icon>
+      Guardar Cambios
+    </button>
+  </form> 
+  
+
+
+  
+  <ng-template #otraVentana>
+    <ope-representante></ope-representante>
+  </ng-template>
+  
+</div>
