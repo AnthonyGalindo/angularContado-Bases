@@ -1,5 +1,6 @@
 import { Component, OnChanges } from '@angular/core';
-import { Canton, Parroquia, Provincia } from '../../interface/contrato-interfaces';
+import { Canton, Parroquia, Provincia, Tipo_Contrato } from '../../interface/contrato-interfaces';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cont-generar',
@@ -7,12 +8,26 @@ import { Canton, Parroquia, Provincia } from '../../interface/contrato-interface
   styleUrls: ['./cont-generar.component.css']
 })
 export class ContGenerarComponent {
+    
+  constructor( private fb:FormBuilder ) {    
+  }
 
+  public formContrato: FormGroup = this.fb.group(
+    {
+      valorTipo: [0],
+      valorTotal:[0],
+      selected_tipo_Contrato:[0.45]
 
-  public cantones: Canton[] = [];
-  public parroquias: Parroquia[] = [];
+    }
+  )
+
+  public cantidad = 0;
+  public total = 0;
+
   public selectedProvincia!: number ;
-
+  public cantones: Canton[] = [];
+  public parroquias: Parroquia[] = []; 
+ 
   public provincias: Provincia[] = [
     // { value: 1, viewValue:  'Azuay' },
     // { value: 2, viewValue:  'Bolívar' },
@@ -178,9 +193,26 @@ export class ContGenerarComponent {
     },
     
   ]
+
+  public tipoContrato:Tipo_Contrato[] = [
+    {
+      nombre: 'Postes',
+      descripcion: 'Realizacion de contrato por poste',
+      valorUnitario: 0.45
+    },
+
+    {
+      nombre: 'Ductos',
+      descripcion: 'Realizacion de contrato por ducto',
+      valorUnitario: 0.65
+    },
+
+  ]
+
+  selected_tipo_Contrato :string = this.tipoContrato[0].nombre
   
   public cargaCantones(provinciaId: number): void {
-    this.cantones= [];
+    this.parroquias = [];
     this.cantones = this.listaCantones.filter( canton => canton.idProvincia === provinciaId );
     console.log(this.cantones);
   }
@@ -188,9 +220,24 @@ export class ContGenerarComponent {
   public cargarParroquias( parroquiaId: number ) {
     console.log(parroquiaId);
     
-    this.parroquias = [];
     this.parroquias = this.listaParroquias.filter( parroquia => parroquia.idParroquia === parroquiaId );
     console.log(this.listaParroquias);
   }
+
+  public sendFormularioContrato() { 
+    console.log('enviar');
+    console.log(this.formContrato);
+  }
+
+  public recalcular(val:number) {
+    console.log(val);
+    
+    this.cantidad = this.formContrato.get('valorTipo')!.value;
+    this.total = (this.cantidad * val); 
+    
+    this.formContrato.get('valorTotal')!.setValue(this.total);
+     
+  }
+
 
 }

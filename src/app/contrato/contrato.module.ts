@@ -6,6 +6,7 @@ import { ContVisualizarComponent } from './pages/cont-visualizar/cont-visualizar
 import { ContratoRoutingModule } from './contrato-routing.module';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,7 +21,8 @@ import { MaterialModule } from '../material/material.module';
     CommonModule,
     ContratoRoutingModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
   ]
 })
 export class ContratoModule { }

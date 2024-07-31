@@ -20,7 +20,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {  MatDatepickerModule } from '@angular/material/datepicker';
-import {  MatNativeDateModule  } from '@angular/material/core';
+import {  MatNativeDateModule,MAT_DATE_LOCALE, DateAdapter  } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
@@ -54,6 +54,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatNativeDateModule ,
     MatCheckboxModule
     
-  ]
+  ],
+  providers: [ {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},]
 })
 export class MaterialModule { }

@@ -6,19 +6,13 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { listadoOperadora } from '../../interfaces/interfaces-Operadora';
 
-
-
 @Component({
   selector: 'ope-listado-operadora',
   templateUrl: './listado-operadora.component.html',
   styleUrls: ['./listado-operadora.component.css'],
 })
 export class ListadoOperadoraComponent implements OnInit, AfterViewInit {
-
-
-  constructor(private _liveAnnouncer: LiveAnnouncer , private router: Router){
-
-  }
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router) {}
   darta_arr: listadoOperadora[] = [
     {
       position: '1',
@@ -100,7 +94,6 @@ export class ListadoOperadoraComponent implements OnInit, AfterViewInit {
       telefono2: '7894531',
       representante: 'Pedro Marin',
     },
-    
   ];
 
   displayedColumnss: string[] = [
@@ -111,26 +104,21 @@ export class ListadoOperadoraComponent implements OnInit, AfterViewInit {
     'telefono2',
     'representante',
     'icons',
-  
   ];
-  dataSourcee = this.darta_arr;
 
+  dataSourcee = this.darta_arr;
   dataSource = new MatTableDataSource(this.darta_arr);
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  ngOnInit() {
-  }
-  
+  ngOnInit() {}
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
-
-  announceSortChange(sortState: Sort ) {
-    
+  announceSortChange(sortState: Sort) {
     if (sortState.direction) {
       this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
     } else {
@@ -138,20 +126,14 @@ export class ListadoOperadoraComponent implements OnInit, AfterViewInit {
     }
   }
 
-
   aplicarFiltro(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  editarOperadora(elemento: listadoOperadora ) {
+  editarOperadora(elemento: listadoOperadora) {
     console.log(elemento);
 
-    this.router.navigate(['/operadora/editar', elemento ])
-   
+    this.router.navigate(['/operadora/editar', elemento]);
   }
-
-  
-
-
 }
