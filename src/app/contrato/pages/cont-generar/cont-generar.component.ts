@@ -1,56 +1,100 @@
 import { Component, OnChanges } from '@angular/core';
-import { Canton, Parroquia, Provincia, Tipo_Contrato } from '../../interface/contrato-interfaces';
+import { Canton, Parroquia, Provincia, TablaContrato, Tipo_Contrato } from '../../interface/contrato-interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-cont-generar',
   templateUrl: './cont-generar.component.html',
-  styleUrls: ['./cont-generar.component.css']
+  styleUrls: ['./cont-generar.component.css'],
+  providers: [DatePipe]
 })
 export class ContGenerarComponent {
-    
-  constructor( private fb:FormBuilder ) {    
-  }
-
-  public formContrato: FormGroup = this.fb.group(
-    {
-      valorTipo: [0],
-      valorTotal:[0],
-      selected_tipo_Contrato:[0.45]
-
-    }
-  )
 
   public cantidad = 0;
+ 
   public total = 0;
 
   public selectedProvincia!: number ;
   public cantones: Canton[] = [];
   public parroquias: Parroquia[] = []; 
- 
+
+  public tipoContrato:Tipo_Contrato[] = [
+    {
+      nombre: 'Postes',
+      descripcion: 'Realizacion de contrato por poste',
+      valorUnitario: 0.45
+    },
+
+    {
+      nombre: 'Ductos',
+      descripcion: 'Realizacion de contrato por ducto',
+      valorUnitario: 0.66
+    },
+
+  ]
+  selected_tipo_Contrato :string = this.tipoContrato[0].nombre
+  
+  public formContrato: FormGroup = this.fb.group(
+    {
+      valCantidad: [0],
+      valorTotal:[0],
+      selected_tipo_Contrato:[0.45],
+      fechaVigente:[ new Date ],
+      diasContrato:[0]
+    }
+  );
+
+  displayedColumnss: string[] = [
+    'tipoContrato',
+    'vigencia',
+    'ubicacion',
+    'cantidad',
+    'valor',
+  ];
+
+  constructor( private fb:FormBuilder, private datePipe: DatePipe ) {    
+  }
+
+  public fecha_inicio_tabla:string| null = this.datePipe.transform( this.formContrato.get('fechaVigente')?.value, ' dd MMM yyyy') ;
+  
+  retornarFecha( fecha: Date ) {
+    console.log(fecha);
+    this.dataTabla[0].vigencia = this.datePipe.transform( this.formContrato.get('fechaVigente')?.value, ' dd MMM yyyy') ; 
+  }
+
+  // TODO: CALCULAR LA FECHA FINAL EN BASE A LOS DIAS
+  calcularFecha( dias: number ){
+    // console.log(dias);
+    // console.log(this.formContrato.get('fechaVigente')?.value);
+    let fechaVigente = this.formContrato.get('fechaVigente')?.value;
+    const fechaFin = new Date(fechaVigente.getTime() + (dias * 24 * 60 * 60 * 1000) );
+        fechaVigente = this.datePipe.transform(fechaVigente, 'dd MMM yyyy');
+    const fechaFinFormateada = this.datePipe.transform(fechaFin, 'dd MMM yyyy');
+    console.log(fechaFin);
+    console.log(fechaFinFormateada);
+
+    if(dias > 0){
+      this.dataTabla[0].vigencia = `${fechaVigente} - ${fechaFinFormateada}` ;
+    }
+
+  }
+
+  public dataTabla : TablaContrato[] = [
+    { 
+      ubicacion: 'ambato-centro, ambato-sur',
+      vigencia:  this.fecha_inicio_tabla  , 
+      cantidad: this.cantidad, 
+      valor: this.total, 
+      tipoContrato: 'POSTES',
+    }, 
+  ]
+
+  dataSource = new MatTableDataSource(this.dataTabla);
+
   public provincias: Provincia[] = [
-    // { value: 1, viewValue:  'Azuay' },
-    // { value: 2, viewValue:  'Bolívar' },
-    // { value: 3, viewValue:  'Cañar' },
-    // { value: 4, viewValue:  'Carchi' },
-    // { value: 5, viewValue:  'Chimborazo' },
-    // { value: 6, viewValue:  'Cotopaxi' },
-    // { value: 7, viewValue:  'El' },
-    // { value: 8, viewValue:  'Esmeraldas' },
-    // { value: 9, viewValue:  'Galápagos' },
-    // { value: 10, viewValue: 'Guayas' },
-    // { value: 11, viewValue: 'Imbabura' },
-    // { value: 12, viewValue: 'Loja' },
-    // { value: 13, viewValue: 'Los' },
-    // { value: 14, viewValue: 'Manabí' },
-    // { value: 15, viewValue: 'Morona' },
-    // { value: 16, viewValue: 'Napo' },
-    // { value: 17, viewValue: 'Orellana' },
-    // { value: 18, viewValue: 'Pastaza' },
-    // { value: 19, viewValue: 'Pichincha' },
-    // { value: 20, viewValue: 'Santa' },
-    // { value: 21, viewValue: 'Santo' },
-    // { value: 22, viewValue: 'Sucumbíos' },
     { value: 23, viewValue: 'Tungurahua' },
     { value: 24, viewValue: 'Zamora Chinchipe ' },
   ];
@@ -144,7 +188,7 @@ export class ContGenerarComponent {
       value: 238
     },
   ]
-
+  
   private listaParroquias: Parroquia[] = [
     {
       idParroquia: 231,
@@ -194,22 +238,6 @@ export class ContGenerarComponent {
     
   ]
 
-  public tipoContrato:Tipo_Contrato[] = [
-    {
-      nombre: 'Postes',
-      descripcion: 'Realizacion de contrato por poste',
-      valorUnitario: 0.45
-    },
-
-    {
-      nombre: 'Ductos',
-      descripcion: 'Realizacion de contrato por ducto',
-      valorUnitario: 0.65
-    },
-
-  ]
-
-  selected_tipo_Contrato :string = this.tipoContrato[0].nombre
   
   public cargaCantones(provinciaId: number): void {
     this.parroquias = [];
@@ -229,15 +257,23 @@ export class ContGenerarComponent {
     console.log(this.formContrato);
   }
 
-  public recalcular(val:number) {
-    console.log(val);
-    
-    this.cantidad = this.formContrato.get('valorTipo')!.value;
-    this.total = (this.cantidad * val); 
+  public recalcular( valorTipoContrato:number ) {
+
+  
+    this.cantidad = this.formContrato.get('valCantidad')!.value;
+    this.total = (this.cantidad * valorTipoContrato); 
     
     this.formContrato.get('valorTotal')!.setValue(this.total);
-     
-  }
 
+    const cantidadMostrar = this.total.toFixed(2);
+
+    this.dataTabla[0].cantidad = this.cantidad;
+    this.dataTabla[0].valor = parseFloat(cantidadMostrar);
+
+    (this.dataTabla[0].tipoContrato == 'POSTES')? this.dataTabla[0].tipoContrato = 'DUCTOS': this.dataTabla[0].tipoContrato = 'POSTES'
+
+  }
+  
+  //tabla de resultados
 
 }

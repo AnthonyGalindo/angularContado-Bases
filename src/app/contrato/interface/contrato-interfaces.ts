@@ -1,3 +1,5 @@
+import { MatDateFormats } from "@angular/material/core";
+import { MatMonthView } from "@angular/material/datepicker";
 
 
 export interface Provincia {
@@ -18,4 +20,12 @@ export interface Tipo_Contrato {
     nombre:string,
     descripcion:string,
     valorUnitario: number,
+}
+export interface TablaContrato {
+    vigencia: string| null;
+    cantidad: number,
+    valor: number,
+    ubicacion: string,
+    tipoContrato: string,
+
 }

@@ -106,7 +106,7 @@ export class ListadoOperadoraComponent implements OnInit, AfterViewInit {
     'icons',
   ];
 
-  dataSourcee = this.darta_arr;
+  // dataSourcee = this.darta_arr;
   dataSource = new MatTableDataSource(this.darta_arr);
 
   @ViewChild(MatSort) sort!: MatSort;
@@ -133,7 +133,6 @@ export class ListadoOperadoraComponent implements OnInit, AfterViewInit {
 
   editarOperadora(elemento: listadoOperadora) {
     console.log(elemento);
-
     this.router.navigate(['/operadora/editar', elemento]);
   }
 }

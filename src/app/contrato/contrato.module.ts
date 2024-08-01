@@ -7,6 +7,7 @@ import { ContratoRoutingModule } from './contrato-routing.module';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ContCompTablaMensualComponent } from './components/cont-comp-tabla-mensual/cont-comp-tabla-mensual.component';
 
 
 
@@ -15,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ContGenerarComponent,
     ContCambiarComponent,
     ContVisualizarComponent,
+    ContCompTablaMensualComponent,
 
   ],
   imports: [
@@ -23,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     MaterialModule,
     ReactiveFormsModule,
+    MaterialModule
   ]
 })
 export class ContratoModule { }
