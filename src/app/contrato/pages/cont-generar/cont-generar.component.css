@@ -3,6 +3,12 @@
     padding-bottom: 1rem;
 } */
 
+th {
+    background-color: #1B93E3 !important;
+    color: hwb(180 94% 0%);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 .bg-blue {
 background-color: #235FBF !important;
 font-family: 'Times New Roman', Times, serif;

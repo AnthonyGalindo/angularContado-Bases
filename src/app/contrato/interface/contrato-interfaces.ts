@@ -25,6 +25,7 @@ export interface TablaContrato {
     vigencia: string| null;
     cantidad: number,
     valor: number,
+    subTotal: number,
     ubicacion: string,
     tipoContrato: string,
 
