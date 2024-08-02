@@ -30,3 +30,10 @@ export interface TablaContrato {
     tipoContrato: string,
 
 }
+
+export interface PruebaLista {
+    mes   :  string,
+    valor  :  string,
+    iva :  string,
+    valorTotal :  string,
+}

@@ -1,11 +1,5 @@
 import { Component, OnChanges } from '@angular/core';
-import {
-  Canton,
-  Parroquia,
-  Provincia,
-  TablaContrato,
-  Tipo_Contrato,
-} from '../../interface/contrato-interfaces';
+import { Canton, Parroquia, Provincia, PruebaLista, TablaContrato, Tipo_Contrato,} from '../../interface/contrato-interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { CurrencyPipe, DatePipe } from '@angular/common';
@@ -18,13 +12,14 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
 })
 export class ContGenerarComponent {
   public cantidad = 0;
-
   public total = 0;
   public subtotal = 0;
+
 
   public selectedProvincia!: number;
   public cantones: Canton[] = [];
   public parroquias: Parroquia[] = [];
+  public meses: string[] = ['Enero', 'Febrero', 'Marzo' , 'Abril' , 'Mayo' ,'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Nobiembre', 'Diciembre'] ;
 
   constructor(private fb: FormBuilder, private datePipe: DatePipe) {}
 
@@ -286,6 +281,8 @@ export class ContGenerarComponent {
       : (this.dataTabla[0].tipoContrato = 'POSTES');
     }
   }
+  
+
 
   //tabla de resultados
 }
