@@ -32,8 +32,11 @@ export interface TablaContrato {
 }
 
 export interface PruebaLista {
-    mes   :  string,
-    valor  :  string,
-    iva :  string,
-    valorTotal :  string,
+    valor  :  number,
+    valorTotal :  number,
 }
+
+export interface DialogData {
+    animal: string;
+    name: string;
+  }

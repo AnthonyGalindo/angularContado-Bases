@@ -25,7 +25,8 @@ import { ContCompTablaMensualComponent } from './components/cont-comp-tabla-mens
     RouterModule,
     MaterialModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ]
 })
 export class ContratoModule { }

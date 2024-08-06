@@ -1,8 +1,12 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component, inject, Inject, Input, OnChanges, signal  } from '@angular/core';
 import { Canton, Parroquia, Provincia, PruebaLista, TablaContrato, Tipo_Contrato,} from '../../interface/contrato-interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { CurrencyPipe, DatePipe } from '@angular/common';
+import { ServiceContrato } from '../../services/contrato.service';
+import { Router } from '@angular/router';
+import {  MatDialog } from '@angular/material/dialog';
+import { ContCompTablaMensualComponent } from '../../components/cont-comp-tabla-mensual/cont-comp-tabla-mensual.component';
 
 @Component({
   selector: 'app-cont-generar',
@@ -11,9 +15,35 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
   providers: [DatePipe],
 })
 export class ContGenerarComponent {
+
+  // animal!: string;
+  // name!: string;
+
+  constructor(private fb: FormBuilder, private datePipe: DatePipe ,  private sc: ServiceContrato, private rout:Router , public dialog: MatDialog) {
+    
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ContCompTablaMensualComponent, {
+      data: {name: this.total, animal: this.subtotal},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      
+    });
+  }
+
+
   public cantidad = 0;
   public total = 0;
   public subtotal = 0;
+
+   tablaCalculadaMess: PruebaLista [] = [{
+     valor: 0,
+     valorTotal: 0
+   }] ;
+ 
 
 
   public selectedProvincia!: number;
@@ -21,7 +51,7 @@ export class ContGenerarComponent {
   public parroquias: Parroquia[] = [];
   public meses: string[] = ['Enero', 'Febrero', 'Marzo' , 'Abril' , 'Mayo' ,'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Nobiembre', 'Diciembre'] ;
 
-  constructor(private fb: FormBuilder, private datePipe: DatePipe) {}
+
 
   public tipoContrato: Tipo_Contrato[] = [
     {
@@ -52,20 +82,22 @@ export class ContGenerarComponent {
     'vigencia',
     'ubicacion',
     'cantidad',
+    'subTotalMes',
+    'totalMes',
     'subTotal',
     'valor',
   ];
 
   public fecha_inicio_tabla: string | null = this.datePipe.transform(
     this.formContrato.get('fechaVigente')?.value,
-    ' dd MMM yyyy'
+    'dd/MM/yyy'
   );
 
   retornarFecha(fecha: Date) {
     console.log(fecha);
     this.dataTabla[0].vigencia = this.datePipe.transform(
       this.formContrato.get('fechaVigente')?.value,
-      ' dd MMM yyyy'
+      'dd/MM/yyy'
     );
   }
   // TODO: CALCULAR LA FECHA FINAL EN BASE A LOS DIAS
@@ -74,8 +106,8 @@ export class ContGenerarComponent {
     const fechaFin = new Date(fechaVigente);
     fechaFin.setMonth(fechaFin.getMonth() + meses);
 
-    fechaVigente = this.datePipe.transform(fechaVigente, 'dd MMM yyyy');
-    const fechaFinFormateada = this.datePipe.transform(fechaFin, 'dd MMM yyyy');
+    fechaVigente = this.datePipe.transform(fechaVigente, 'dd/MM/yyy');
+    const fechaFinFormateada = this.datePipe.transform(fechaFin, 'dd/MM/yyy');
     console.log(fechaFin);
     console.log(fechaFinFormateada);
 
@@ -259,6 +291,21 @@ export class ContGenerarComponent {
   public sendFormularioContrato() {
     console.log('enviar');
     console.log(this.formContrato);
+
+
+
+  }
+
+  public generarTabla() {
+
+      let valores: PruebaLista = {
+      valor: this.total,
+      valorTotal: this.subtotal
+    }
+
+     this.tablaCalculadaMess.push( valores );
+    this.sc.setTabla_contrato = this.tablaCalculadaMess;
+    this.rout.navigate(['/contrato/cambiar']);
   }
 
   public recalcular(valorTipoContrato: number, control: string) {
@@ -282,7 +329,6 @@ export class ContGenerarComponent {
     }
   }
   
-
 
   //tabla de resultados
 }

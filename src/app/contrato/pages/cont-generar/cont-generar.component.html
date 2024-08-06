@@ -145,9 +145,9 @@
           Guardar Contrato
         </button>
 
-        <button  type="submit" class="ml-4 btn-naranja mb-4 btn-color"  mat-button mat-flat-button color="primary">
+        <button  type="button" class="ml-4 btn-naranja mb-4 btn-color" (click)="generarTabla()"  mat-button mat-flat-button color="primary">
           <mat-icon>verified</mat-icon>
-          Verificar Contrato
+          Generar tabla 
         </button>
 
     </div>
@@ -172,7 +172,7 @@
     </ng-container>
 
     <ng-container matColumnDef="cantidad">
-      <th mat-header-cell   *matHeaderCellDef>CANTIDAD/LONGITUD</th>
+      <th mat-header-cell   *matHeaderCellDef>CANT/LONG</th>
       <td mat-cell  *matCellDef="let element" class="fs-5">{{ element.cantidad }}</td>
     </ng-container>
 
@@ -191,6 +191,17 @@
       <td mat-cell  *matCellDef="let element" class="fs-6">{{ element.tipoContrato }}</td>
     </ng-container>
 
+    <ng-container matColumnDef="subTotalMes">
+      <th mat-header-cell  *matHeaderCellDef > SubTotal Mensual  </th>
+      <td mat-cell *matCellDef="let element"  class="fs-6" >{{ (element.subTotal /12) | currency: 'USD' }}</td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="totalMes">
+      <th mat-header-cell *matHeaderCellDef > Total Mensual </th>
+      <td mat-cell *matCellDef="let element"   class="fs-6" > {{ element.valor /12 | currency: 'USD' }} </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumnss"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumnss"></tr>
 
@@ -198,8 +209,21 @@
 
 </div>
 
+  <!-- <cont-comp-tabla-mensual  ></cont-comp-tabla-mensual> -->
 
 
-<cont-comp-tabla-mensual/>
 
-
+  <ol>
+    <li>
+      <mat-form-field>
+        <mat-label>Probando</mat-label>
+        <input matInput >
+      </mat-form-field>
+    </li>
+    <li>
+      <button mat-raised-button (click)="openDialog()"> <mat-icon>save</mat-icon> </button>
+    </li>
+    <!-- <li *ngIf="total">
+      You chose: <em>{{total}}</em>
+    </li> -->
+  </ol>
