@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContCompTablaMensualComponent } from './components/cont-comp-tabla-mensual/cont-comp-tabla-mensual.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ContratosService } from './services/contrato-listado.service';
 
 
 
@@ -26,7 +28,9 @@ import { ContCompTablaMensualComponent } from './components/cont-comp-tabla-mens
     MaterialModule,
     ReactiveFormsModule,
     MaterialModule,
-    FormsModule
-  ]
+    FormsModule,
+    HttpClientModule
+  ],
+  providers: [ContratosService]
 })
 export class ContratoModule { }

@@ -7,7 +7,7 @@ import { ServiceContrato } from '../../services/contrato.service';
 import { Router } from '@angular/router';
 import {  MatDialog } from '@angular/material/dialog';
 import { ContCompTablaMensualComponent } from '../../components/cont-comp-tabla-mensual/cont-comp-tabla-mensual.component';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-cont-generar',
   templateUrl: './cont-generar.component.html',
@@ -69,7 +69,7 @@ export class ContGenerarComponent {
   selected_tipo_Contrato: string = this.tipoContrato[0].nombre;
 
   public formContrato: FormGroup = this.fb.group({
-    valCantidad: [0],
+    valCantidad: [0 , Validators.max(54788)],
     valorTotal: [0],
     selected_tipo_Contrato: [0.45],
     fechaVigente: [new Date()],
@@ -330,5 +330,25 @@ export class ContGenerarComponent {
   }
   
 
+
+  probarSweetAlert(){
+  
+    Swal.fire({
+      title: "Desea Guardar este Contrato ?",
+      showDenyButton: true,
+      confirmButtonText: "Guardar",
+      denyButtonText: `Cancelar`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire("Se Genero Un Nuevo Contrato!", "", "success");
+      }
+    });
+    
+   
+  }
+
+
+  
   //tabla de resultados
 }

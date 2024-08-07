@@ -22,3 +22,8 @@ font-family: 'Times New Roman', Times, serif;
 .btn-color {
     background-color: #235FBF;
 }
+
+mat-checkbox{
+    margin: 0 !important;
+}
+
