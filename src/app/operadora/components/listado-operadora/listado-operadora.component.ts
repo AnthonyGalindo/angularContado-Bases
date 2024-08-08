@@ -112,6 +112,10 @@ export class ListadoOperadoraComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+
+
+  
+
   ngOnInit() {}
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;

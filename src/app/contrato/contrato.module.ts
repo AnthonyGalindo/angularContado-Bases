@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContCompTablaMensualComponent } from './components/cont-comp-tabla-mensual/cont-comp-tabla-mensual.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ContratosService } from './services/contrato-listado.service';
+import { ContCompListaContratoComponent } from './components/cont-comp-lista-contrato/cont-comp-lista-contrato.component';
 
 
 
@@ -19,6 +20,7 @@ import { ContratosService } from './services/contrato-listado.service';
     ContCambiarComponent,
     ContVisualizarComponent,
     ContCompTablaMensualComponent,
+    ContCompListaContratoComponent,
 
   ],
   imports: [

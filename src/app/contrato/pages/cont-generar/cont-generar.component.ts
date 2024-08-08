@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import {  MatDialog } from '@angular/material/dialog';
 import { ContCompTablaMensualComponent } from '../../components/cont-comp-tabla-mensual/cont-comp-tabla-mensual.component';
 import Swal from 'sweetalert2'
+import { Operadora } from 'src/app/operadora/interfaces/interfaces-Operadora';
 @Component({
   selector: 'app-cont-generar',
   templateUrl: './cont-generar.component.html',
@@ -15,13 +16,12 @@ import Swal from 'sweetalert2'
   providers: [DatePipe],
 })
 export class ContGenerarComponent {
-
-  // animal!: string;
-  // name!: string;
-
-  constructor(private fb: FormBuilder, private datePipe: DatePipe ,  private sc: ServiceContrato, private rout:Router , public dialog: MatDialog) {
-    
-  }
+  constructor(
+    private fb: FormBuilder, 
+    private datePipe: DatePipe,
+    private sc: ServiceContrato,
+    private rout:Router,
+    public dialog: MatDialog) { }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ContCompTablaMensualComponent, {
@@ -34,7 +34,6 @@ export class ContGenerarComponent {
     });
   }
 
-
   public cantidad = 0;
   public total = 0;
   public subtotal = 0;
@@ -43,15 +42,11 @@ export class ContGenerarComponent {
      valor: 0,
      valorTotal: 0
    }] ;
- 
-
 
   public selectedProvincia!: number;
   public cantones: Canton[] = [];
   public parroquias: Parroquia[] = [];
   public meses: string[] = ['Enero', 'Febrero', 'Marzo' , 'Abril' , 'Mayo' ,'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Nobiembre', 'Diciembre'] ;
-
-
 
   public tipoContrato: Tipo_Contrato[] = [
     {
@@ -69,6 +64,7 @@ export class ContGenerarComponent {
   selected_tipo_Contrato: string = this.tipoContrato[0].nombre;
 
   public formContrato: FormGroup = this.fb.group({
+    operadoraCod: [0],
     valCantidad: [0 , Validators.max(54788)],
     valorTotal: [0],
     selected_tipo_Contrato: [0.45],
@@ -129,11 +125,28 @@ export class ContGenerarComponent {
 
   dataSource = new MatTableDataSource(this.dataTabla);
 
+  public operadoras: Operadora[] = [
+    {
+      idOperadora: 111,
+      nombre: 'movistar',
+      ruc: '12345378902',
+      telefono1: '097864587',
+      telefono2: '0478921',
+      direccion: 'av Bolivariana yRosa blANCA'
+    },
+    {
+      idOperadora: 222,
+      nombre: 'Porta',
+      ruc: '12345378902',
+      telefono1: '097864587',
+      telefono2: '0478921',
+      direccion: 'av Bolivariana yRosa blANCA'
+    }
+  ]
   public provincias: Provincia[] = [
     { value: 23, viewValue: 'Tungurahua' },
-    { value: 24, viewValue: 'Zamora Chinchipe ' },
+    { value: 24, viewValue: 'Zamora Chinchipe' },
   ];
-
   private listaCantones: Canton[] = [
     {
       idProvincia: 23,
@@ -222,7 +235,6 @@ export class ContGenerarComponent {
       value: 238,
     },
   ];
-
   private listaParroquias: Parroquia[] = [
     {
       idParroquia: 231,
@@ -270,7 +282,6 @@ export class ContGenerarComponent {
       value: 56,
     },
   ];
-
   public cargaCantones(provinciaId: number): void {
     this.parroquias = [];
     this.cantones = this.listaCantones.filter(
@@ -278,7 +289,6 @@ export class ContGenerarComponent {
     );
     console.log(this.cantones);
   }
-
   public cargarParroquias(parroquiaId: number) {
     console.log(parroquiaId);
 
@@ -287,15 +297,10 @@ export class ContGenerarComponent {
     );
     console.log(this.listaParroquias);
   }
-
   public sendFormularioContrato() {
     console.log('enviar');
-    console.log(this.formContrato);
-
-
-
+    console.log(this.formContrato.value);
   }
-
   public generarTabla() {
 
       let valores: PruebaLista = {
@@ -303,11 +308,10 @@ export class ContGenerarComponent {
       valorTotal: this.subtotal
     }
 
-     this.tablaCalculadaMess.push( valores );
+    this.tablaCalculadaMess.push( valores );
     this.sc.setTabla_contrato = this.tablaCalculadaMess;
     this.rout.navigate(['/contrato/cambiar']);
   }
-
   public recalcular(valorTipoContrato: number, control: string) {
     this.cantidad = this.formContrato.get('valCantidad')!.value;
     this.total =
@@ -328,11 +332,7 @@ export class ContGenerarComponent {
       : (this.dataTabla[0].tipoContrato = 'POSTES');
     }
   }
-  
-
-
   probarSweetAlert(){
-  
     Swal.fire({
       title: "Desea Guardar este Contrato ?",
       showDenyButton: true,
@@ -344,11 +344,11 @@ export class ContGenerarComponent {
         Swal.fire("Se Genero Un Nuevo Contrato!", "", "success");
       }
     });
-    
-   
   }
 
-
+  SelecionaOperadora( ev: number) {
+      console.log(ev);            
+    }
   
-  //tabla de resultados
+
 }

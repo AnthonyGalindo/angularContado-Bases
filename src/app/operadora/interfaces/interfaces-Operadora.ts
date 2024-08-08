@@ -12,6 +12,7 @@ export interface OperadoraFormulario {
 }
 
 export interface Operadora {
+    idOperadora?: number;
     nombre : string ;
     ruc : string ;
     telefono1: string ;
@@ -19,6 +20,11 @@ export interface Operadora {
     direccion : string ;
     observacion ?: string ;
 }
+
+// export interface Operadora_Contrato {
+//     idOperadora: number ;
+//     nombreOperadora: string ;
+// }
 
 export interface Responsable {
     nombres : string ;

@@ -27,3 +27,21 @@ mat-checkbox{
     margin: 0 !important;
 }
 
+
+
+
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    /* Ajustes para pantallas pequeñas */
+    .mat-header-cell, .mat-cell {
+      padding: 8px;
+      font-size: 12px;
+    }
+    table {
+      width: 100%;
+    }
+  }

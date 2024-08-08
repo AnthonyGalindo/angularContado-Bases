@@ -22,8 +22,9 @@ import { MatSortModule } from '@angular/material/sort';
 import {  MatDatepickerModule } from '@angular/material/datepicker';
 import {  MatNativeDateModule,MAT_DATE_LOCALE, DateAdapter  } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatExpansionModule } from '@angular/material/expansion';
 
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
@@ -55,7 +56,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatNativeDateModule ,
     MatCheckboxModule,
     MatDialogModule,
-    
+    MatExpansionModule,
+    MatTooltipModule
   ],
   providers: [ {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},]
 })
