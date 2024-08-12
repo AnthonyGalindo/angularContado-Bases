@@ -16,7 +16,7 @@
       </mat-paginator> 
      </div>
 
-    <table mat-table  [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table  [dataSource]="dataSource"  matSort (matSortChange)="announceSortChange($event)"  class="mat-elevation-z8"    >
 
         <ng-container matColumnDef="dicon_vigencia">
             <th mat-header-cell *matHeaderCellDef> vigencia </th>
@@ -29,19 +29,25 @@
         </ng-container>
     
         <ng-container matColumnDef="dicon_fecha_firma">
-            <th mat-header-cell *matHeaderCellDef> Fecha Firma </th>
-            <td mat-cell *matCellDef="let element"> {{element.dicon_fecha_firma | date :'dd/MM/yyyy' }} </td>
+            <th mat-header-cell *matHeaderCellDef  mat-sort-header> Fecha Firma </th>
+            <td mat-cell sortActionDescription="Sort by name" *matCellDef="let element"> {{element.dicon_fecha_firma | date :'dd/MM/yyyy' }} </td>
         </ng-container>
         
         <ng-container matColumnDef="dictp_codigo_tipo_contrato">
-            <th mat-header-cell *matHeaderCellDef> Tipo Contrato </th>
-            <td mat-cell *matCellDef="let element"> {{element.dictp_codigo_tipo_contrato}} </td>
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Tipo Contrato </th>
+            <td mat-cell sortActionDescription="Sort by name" *matCellDef="let element"> {{element.dictp_codigo_tipo_contrato}} </td>
         </ng-container>
     
         <ng-container matColumnDef="dicon_cantidad">
-            <th mat-header-cell *matHeaderCellDef> Cantidad </th>
-            <td mat-cell *matCellDef="let element"> {{element.dicon_cantidad}} </td>
+            <th mat-header-cell *matHeaderCellDef  mat-sort-header> Cantidad </th>
+            <td mat-cell *matCellDef="let element"  sortActionDescription="Sort by number" > {{element.dicon_cantidad}}   </td>
         </ng-container>
+
+        <ng-container matColumnDef="dicon_operadoraa">
+            <th mat-header-cell *matHeaderCellDef  mat-sort-header> Operadora  </th>
+            <td mat-cell *matCellDef="let element" sortActionDescription="Sort by name" > {{ element.dictp_codigo_tipo_contrato}} </td>
+        </ng-container>
+    
     
         <ng-container matColumnDef="dicon_valor_total">
             <th mat-header-cell *matHeaderCellDef> Total Anual </th>
@@ -53,16 +59,13 @@
             <td mat-cell *matCellDef="let element"> {{ (element.dicon_valor_total / 12) | currency: 'USD'  }} </td>
         </ng-container>
     
-        <ng-container matColumnDef="dicon_operadora">
-            <th mat-header-cell *matHeaderCellDef> Operadora  </th>
-            <td mat-cell *matCellDef="let element"> {{ (element.dicon_valor_total / 12) | currency: 'USD'  }} </td>
-        </ng-container>
     
         <ng-container matColumnDef="acciones">
+
             <th mat-header-cell *matHeaderCellDef> Acciones  </th>
-            <td mat-cell *matCellDef  > 
+            <td mat-cell *matCellDef="let element" > 
                 <button  mat-icon-button  > <mat-icon>preview</mat-icon> </button>
-                <button  mat-icon-button  > <mat-icon>edit</mat-icon> </button>
+                <button  mat-icon-button  (click)="editarContrato(element)" > <mat-icon>edit</mat-icon> </button>
                 <button  mat-icon-button  > <mat-icon>delete</mat-icon> </button>
             </td>
         </ng-container>

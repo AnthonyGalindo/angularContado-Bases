@@ -105,16 +105,12 @@ export class ListadoOperadoraComponent implements OnInit, AfterViewInit {
     'representante',
     'icons',
   ];
-
+  
   // dataSourcee = this.darta_arr;
   dataSource = new MatTableDataSource(this.darta_arr);
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-
-
-  
 
   ngOnInit() {}
   ngAfterViewInit() {

@@ -1,22 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, inject, Inject, Input, OnChanges, signal  } from '@angular/core';
+import { Canton, Parroquia, Provincia, PruebaLista, TablaContrato, Tipo_Contrato,} from '../../interface/contrato-interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { Canton, Parroquia, Provincia, PruebaLista, TablaContrato, Tipo_Contrato } from '../../interface/contrato-interfaces';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { ServiceContrato } from '../../services/contrato.service';
-import Swal from 'sweetalert2';
-import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import {  MatDialog } from '@angular/material/dialog';
+import { ContCompTablaMensualComponent } from '../../components/cont-comp-tabla-mensual/cont-comp-tabla-mensual.component';
+import Swal from 'sweetalert2'
 import { Operadora } from 'src/app/operadora/interfaces/interfaces-Operadora';
-
 @Component({
-  selector: 'app-cont-cambiar',
-  templateUrl: './cont-cambiar.component.html',
-  styleUrls: ['./cont-cambiar.component.css']
+  selector: 'cont-comp-generar',
+  templateUrl: './cont-comp-generar.component.html',
+  styleUrls: ['./cont-comp-generar.component.css'],
+  // providers: [DatePipe],
 })
-export class ContCambiarComponent {
- 
-
+export class ContCompGenerarComponent {
   constructor(
     private fb: FormBuilder, 
     private datePipe: DatePipe,
@@ -24,16 +23,16 @@ export class ContCambiarComponent {
     private rout:Router,
     public dialog: MatDialog) { }
 
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(ContCompTablaMensualComponent, {
-  //     data: {name: this.total, animal: this.subtotal},
-  //   });
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ContCompTablaMensualComponent, {
+      data: {name: this.total, animal: this.subtotal},
+    });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
       
-  //   });
-  
+    });
+  }
 
   public cantidad = 0;
   public total = 0;
@@ -351,7 +350,5 @@ export class ContCambiarComponent {
       console.log(ev);            
     }
   
- 
-
 
 }

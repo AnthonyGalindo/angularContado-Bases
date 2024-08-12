@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ContGenerarComponent } from './pages/cont-generar/cont-generar.component';
 import { ContCambiarComponent } from './pages/cont-cambiar/cont-cambiar.component';
 import { ContVisualizarComponent } from './pages/cont-visualizar/cont-visualizar.component';
@@ -11,6 +11,7 @@ import { ContCompTablaMensualComponent } from './components/cont-comp-tabla-mens
 import { HttpClientModule } from '@angular/common/http';
 import { ContratosService } from './services/contrato-listado.service';
 import { ContCompListaContratoComponent } from './components/cont-comp-lista-contrato/cont-comp-lista-contrato.component';
+import { ContCompGenerarComponent } from './components/cont-comp-generar-contrato/cont-comp-generar.component';
 
 
 
@@ -21,6 +22,7 @@ import { ContCompListaContratoComponent } from './components/cont-comp-lista-con
     ContVisualizarComponent,
     ContCompTablaMensualComponent,
     ContCompListaContratoComponent,
+    ContCompGenerarComponent
 
   ],
   imports: [
@@ -33,6 +35,8 @@ import { ContCompListaContratoComponent } from './components/cont-comp-lista-con
     FormsModule,
     HttpClientModule
   ],
-  providers: [ContratosService]
+  providers: [ContratosService,
+    DatePipe
+  ]
 })
 export class ContratoModule { }

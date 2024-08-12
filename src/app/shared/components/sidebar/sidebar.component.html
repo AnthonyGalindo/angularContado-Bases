@@ -1,194 +1,176 @@
-<div class="" id="wrapper"   >
- 
+<div class="" id="wrapper">
   <!-- Sidebar -->
-  <div class="sidebar-color text-light  col-3"  id="sidebar-wrapper"  #wrapper>
-      
-   <div class="menu-statico">
-    <div class="logo">
-      <img
-        _ngcontent-fln-c145=""
-        src="/assets/images/LogoBlancoEEASA.png"
-        height="100px"
-        width="110px"
-        style="margin-top: 10px; margin-bottom: 10px"
-      />
-    </div> 
- 
-    <div class="list-group list-group-flush  ">
-      <!-- Operadora Menu -->
-      <a
-        class="list-group-item list-group-item-action  text-light"
-        (click)="toggleSubMenu(operadoraSubmenu, matIcons[0].Nombre)"
-      >
-        <i class="d-flex align-items-center">
-          <mat-icon> {{ matIcons[0].valor }} </mat-icon>
-          <span class="space"></span> Operadora
-        </i>
-      </a>
-      <div class="collapse ms-5 operadora  " #operadoraSubmenu #menu>
-        <a
-          routerLink="operadora/admin"
-          routerLinkActive="active-link"
-          class="list-group-item list-group-item-action  text-light"
-          ><i class="d-flex align-items-center"> Registrar </i>  </a>
-        <a
-          routerLink="operadora/editar"
-          routerLinkActive="active-link"
-          class="list-group-item list-group-item-action text-light"
-          ><i class="fas fa-id-card"></i> Editar </a
-        >
-        <a
-          routerLink="operadora/ver"
-          routerLinkActive="active-link"
-          class="list-group-item list-group-item-action  text-light"
-          ><i class="fas fa-fire-extinguisher"></i> Visualizar </a
-        >
+  <div class="sidebar-color text-light col-3" id="sidebar-wrapper" #wrapper>
+    <div class="menu-statico">
+      <div class="logo">
+        <img
+          _ngcontent-fln-c145=""
+          src="/assets/images/LogoBlancoEEASA.png"
+          height="100px"
+          width="110px"
+          style="margin-top: 10px; margin-bottom: 10px"
+        />
       </div>
- 
-      <!-- Contrato Menu -->
-      <a
-        class="list-group-item list-group-item-action  text-light"
-        (click)="toggleSubMenu(contratoSubmenu, matIcons[1].Nombre)"
-      >
-        <i class="d-flex align-items-center ">
-          <mat-icon> {{ matIcons[1].valor }} </mat-icon>
-          <span class="space"></span> Contrato</i
-        >
-      </a>
-      <div class="collapse ms-5 contrato " #contratoSubmenu #menu>
+
+      <div class="list-group list-group-flush">
+        <!-- Operadora Menu -->
         <a
-          routerLink="contrato/generar"
-          routerLinkActive="active-link"
           class="list-group-item list-group-item-action text-light"
-          ><i class="fas fa-file-contract"></i> Generar </a
+          (click)="toggleSubMenu(operadoraSubmenu, matIcons[0].Nombre)"
         >
+          <i class="d-flex align-items-center">
+            <mat-icon> {{ matIcons[0].valor }} </mat-icon>
+            <span class="space"></span> Operadora
+          </i>
+        </a>
+        <div class="collapse ms-5 operadora" #operadoraSubmenu #menu>
+          <a
+            routerLink="operadora/admin"
+            routerLinkActive="active-link"
+            class="list-group-item list-group-item-action text-light"
+            ><i class="d-flex align-items-center"> Administrar </i>
+          </a>
+        
+        </div>
+
+        <!-- Contrato Menu -->
         <a
-          routerLink="contrato/cambiar"
-          routerLinkActive="active-link"
-          class="list-group-item list-group-item-action  text-light"
-          ><i class="fas fa-edit"></i> Cambiar </a
-        >
-        <a
-          routerLink="contrato/ver"
-          routerLinkActive="active-link"
-          class="list-group-item list-group-item-action  text-light"
-          ><i class="fas fa-eye"></i> Visualizar </a
-        >
-      </div>
- 
-      <!-- Extencion Menu -->
-      <a
-        class="list-group-item list-group-item-action  text-light"
-        (click)="toggleSubMenu(extencionSubmenu, matIcons[2].Nombre)"
-      >
-        <i class="d-flex align-items-center flex">
-          <mat-icon> {{ matIcons[2].valor }} </mat-icon>
-          <span class="space"></span> Extensión Contrato</i
-        >
-      </a>
-      <div class="collapse ms-5 extencion" #extencionSubmenu #menu>
-        <a
-          routerLink="vehiculo-administracion"
-          routerLinkActive="active-link"
-          class="list-group-item list-group-item-action  text-light"
-          ><i class="fas fa-car"></i> Generar </a
-        >
-        <a
-          routerLink="licencias_listado"
-          routerLinkActive="active-link"
-          class="list-group-item list-group-item-action  text-light"
-          ><i class="fas fa-id-card"></i> Editar </a
-        >
-        <a
-          routerLink="dri_tra_extintor_listado"
-          routerLinkActive="active-link"
           class="list-group-item list-group-item-action text-light"
-          ><i class="fas fa-fire-extinguisher"></i> Visualizar </a
+          (click)="toggleSubMenu(contratoSubmenu, matIcons[1].Nombre)"
         >
-      </div>
- 
-      <!-- Documentos Menu -->
-      <a
-        class="list-group-item list-group-item-action text-light"
-        (click)="toggleSubMenu(documentosSubmenu, matIcons[3].Nombre)"
-      >
-        <i class="d-flex align-items-center ">
-          <mat-icon> {{ matIcons[3].valor }} </mat-icon>
-          <span class="space"></span>Documentos
-        </i>
-      </a>
-      <div class="collapse ms-5 documento" #documentosSubmenu #menu>
+          <i class="d-flex align-items-center">
+            <mat-icon> {{ matIcons[1].valor }} </mat-icon>
+            <span class="space"></span> Contrato</i
+          >
+        </a>
+        <div class="collapse ms-5 contrato" #contratoSubmenu #menu>
+          <a
+            routerLink="contrato/generar"
+            routerLinkActive="active-link"
+            class="list-group-item list-group-item-action text-light"
+            ><i class="fas fa-file-contract"></i> Generar
+          </a>
+          <a
+            routerLink="contrato/cambiar"
+            routerLinkActive="active-link"
+            class="list-group-item list-group-item-action text-light"
+            ><i class="fas fa-edit"></i> Cambiar
+          </a>
+          <a
+            routerLink="contrato/ver"
+            routerLinkActive="active-link"
+            class="list-group-item list-group-item-action text-light"
+            ><i class="fas fa-eye"></i> Visualizar
+          </a>
+        </div>
+
+        <!-- Extencion Menu -->
         <a
-          routerLink="vehiculo-administracion"
-          routerLinkActive="active-link"
-          class="list-group-item list-group-item-action  text-light"
-        >
-          <i class="fas fa-car"> </i> Subir </a
-        >
-        <a
-          routerLink="licencias_listado"
-          routerLinkActive="active-link"
-          class="list-group-item list-group-item-action  text-light"
-          ><i class="fas fa-id-card"></i> Editar </a
-        >
-        <a
-          routerLink="dri_tra_extintor_listado"
-          routerLinkActive="active-link"
           class="list-group-item list-group-item-action text-light"
-          ><i class="fas fa-fire-extinguisher"> <span class="space"></span> </i>
-          Buscar </a
+          (click)="toggleSubMenu(extencionSubmenu, matIcons[2].Nombre)"
         >
-      </div>
- 
-      <!-- Pagos Menu -->
-      <a
-        class="list-group-item list-group-item-action text-light"
-        (click)="toggleSubMenu(pagosSubmenu, matIcons[4].Nombre)"
-      >
-        <i class="d-flex align-items-center ">
-          <mat-icon> {{ matIcons[4].valor }} </mat-icon>
-          <span class="space"> </span> Pagos</i
-        >
-      </a>
-      <div class="collapse ms-5 pago" #pagosSubmenu #menu>
+          <i class="d-flex align-items-center flex">
+            <mat-icon> {{ matIcons[2].valor }} </mat-icon>
+            <span class="space"></span> Extensión Contrato</i
+          >
+        </a>
+        <div class="collapse ms-5 extencion" #extencionSubmenu #menu>
+          <a
+            routerLink="vehiculo-administracion"
+            routerLinkActive="active-link"
+            class="list-group-item list-group-item-action text-light"
+            ><i class="fas fa-car"></i> Generar
+          </a>
+          <a
+            routerLink="licencias_listado"
+            routerLinkActive="active-link"
+            class="list-group-item list-group-item-action text-light"
+            ><i class="fas fa-id-card"></i> Editar
+          </a>
+          <a
+            routerLink="dri_tra_extintor_listado"
+            routerLinkActive="active-link"
+            class="list-group-item list-group-item-action text-light"
+            ><i class="fas fa-fire-extinguisher"></i> Visualizar
+          </a>
+        </div>
+
+        <!-- Documentos Menu -->
         <a
-          routerLink="vehiculo-administracion"
-          routerLinkActive="active-link"
           class="list-group-item list-group-item-action text-light"
-          ><i class="fas fa-car"></i> Generar Pagos</a
+          (click)="toggleSubMenu(documentosSubmenu, matIcons[3].Nombre)"
         >
+          <i class="d-flex align-items-center">
+            <mat-icon> {{ matIcons[3].valor }} </mat-icon>
+            <span class="space"></span>Documentos
+          </i>
+        </a>
+        <div class="collapse ms-5 documento" #documentosSubmenu #menu>
+          <a
+            routerLink="vehiculo-administracion"
+            routerLinkActive="active-link"
+            class="list-group-item list-group-item-action text-light"
+          >
+            <i class="fas fa-car"> </i> Subir
+          </a>
+          <a
+            routerLink="licencias_listado"
+            routerLinkActive="active-link"
+            class="list-group-item list-group-item-action text-light"
+            ><i class="fas fa-id-card"></i> Editar
+          </a>
+          <a
+            routerLink="dri_tra_extintor_listado"
+            routerLinkActive="active-link"
+            class="list-group-item list-group-item-action text-light"
+            ><i class="fas fa-fire-extinguisher">
+              <span class="space"></span>
+            </i>
+            Buscar
+          </a>
+        </div>
+
+        <!-- Pagos Menu -->
         <a
-          routerLink="licencias_listado"
-          routerLinkActive="active-link"
           class="list-group-item list-group-item-action text-light"
-          ><i class="fas fa-id-card"></i> Buscar Pagos</a
+          (click)="toggleSubMenu(pagosSubmenu, matIcons[4].Nombre)"
         >
+          <i class="d-flex align-items-center">
+            <mat-icon> {{ matIcons[4].valor }} </mat-icon>
+            <span class="space"> </span> Pagos</i
+          >
+        </a>
+        <div class="collapse ms-5 pago" #pagosSubmenu #menu>
+          <a
+            routerLink="vehiculo-administracion"
+            routerLinkActive="active-link"
+            class="list-group-item list-group-item-action text-light"
+            ><i class="fas fa-car"></i> Generar Pagos</a
+          >
+          <a
+            routerLink="licencias_listado"
+            routerLinkActive="active-link"
+            class="list-group-item list-group-item-action text-light"
+            ><i class="fas fa-id-card"></i> Buscar Pagos</a
+          >
+        </div>
       </div>
     </div>
-   </div>
-   
-
- 
   </div>
   <!-- Header -->
 
-  
-  
-   <mat-sidenav-container id="page-content-wrapper" >
-     <mat-toolbar class="custom-toolbar d-flex justify-content-between">
-       <button mat-icon-button id="menu-toggle" (click)="toggleSidebar()">
-         <mat-icon>menu</mat-icon>
-       </button>
-       <span class="spacer"></span>
-       <button mat-button>Logout</button>
-     </mat-toolbar>
-  
-  
-     <!-- TODO: aQUI VA  EL CONTENIDO -->
-      <div class="container p-4 pantalla-primary">
-        <router-outlet ></router-outlet>
-      </div>
-  
-   </mat-sidenav-container>
-  
+  <mat-sidenav-container id="page-content-wrapper">
+    <mat-toolbar class="custom-toolbar d-flex justify-content-between sticky-sm-top ">
+      <button mat-icon-button id="menu-toggle" (click)="toggleSidebar()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="spacer"></span>
+      <button mat-button>Logout</button>
+    </mat-toolbar>
+
+    <!-- TODO: aQUI VA  EL CONTENIDO -->
+    <div class="container p-4 pantalla-primary">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-container>
 </div>

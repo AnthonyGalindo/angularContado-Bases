@@ -11,4 +11,5 @@ export interface Contrato {
     dicon_fecha_vencimiento?: Date; // Propiedades opcionales
     dicon_estado: 'activo' | 'inactivo' | 'cancelado'; // Tipo enumerado para el estado
     dicon_observaciones?: string | 'no hay';
+    dicon_operadoraa:string ;
   }
