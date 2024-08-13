@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { Canton, Parroquia, Provincia, PruebaLista, TablaContrato, Tipo_Contrato } from '../../interface/contrato-interfaces';
@@ -8,32 +8,32 @@ import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Operadora } from 'src/app/operadora/interfaces/interfaces-Operadora';
+import { ContratosService } from '../../services/contrato-listado.service';
+import { Contrato } from '../../interface/contrato-listado.interfaces';
 
 @Component({
   selector: 'app-cont-cambiar',
   templateUrl: './cont-cambiar.component.html',
   styleUrls: ['./cont-cambiar.component.css']
 })
-export class ContCambiarComponent {
+export class ContCambiarComponent implements OnInit {
  
+  contrato!:Contrato
 
   constructor(
     private fb: FormBuilder, 
     private datePipe: DatePipe,
     private sc: ServiceContrato,
     private rout:Router,
-    public dialog: MatDialog) { }
-
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(ContCompTablaMensualComponent, {
-  //     data: {name: this.total, animal: this.subtotal},
-  //   });
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-      
-  //   });
-  
+    private contratoService: ContratosService,
+    public dialog: MatDialog) {}
+    
+  ngOnInit(){
+  this.contrato = this.contratoService.getContrato;
+  console.log('Contrato cargado:', this.contrato);
+  // Inicializar el formulario con los valores obtenidos del contrato
+  this.formContrato.get('valCantidad')?.setValue(this.contrato.dicon_cantidad);
+  }
 
   public cantidad = 0;
   public total = 0;
@@ -102,12 +102,10 @@ export class ContCambiarComponent {
     let fechaVigente = this.formContrato.get('fechaVigente')?.value;
     const fechaFin = new Date(fechaVigente);
     fechaFin.setMonth(fechaFin.getMonth() + meses);
-
     fechaVigente = this.datePipe.transform(fechaVigente, 'dd/MM/yyy');
     const fechaFinFormateada = this.datePipe.transform(fechaFin, 'dd/MM/yyy');
     console.log(fechaFin);
     console.log(fechaFinFormateada);
-
     if (meses > 0) {
       this.dataTabla[0].vigencia = `${fechaVigente} - ${fechaFinFormateada}`;
     }
@@ -346,12 +344,8 @@ export class ContCambiarComponent {
       }
     });
   }
-
   SelecionaOperadora( ev: number) {
       console.log(ev);            
-    }
-  
- 
-
+  }
 
 }

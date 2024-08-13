@@ -77,6 +77,7 @@ export class ContCompListaContratoComponent implements AfterViewInit {
   }
   editarContrato(contrato: Contrato) {
     console.log( contrato );
+    this.contratosService.contratoValue = contrato;
     this.router.navigate(['/contrato/cambiar']);
     
   }

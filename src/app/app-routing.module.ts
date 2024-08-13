@@ -17,6 +17,11 @@ const routes: Routes = [
   },
 
   {
+    path: 'extension',
+    loadChildren: () => import('./extensiones/extension.module').then(m => m.ExtensionModule )
+  },
+
+  {
     path: '**',
     redirectTo: 'operadora/admin'
   }

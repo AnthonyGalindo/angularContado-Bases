@@ -31,7 +31,6 @@ import { ContCompGenerarComponent } from './components/cont-comp-generar-contrat
     RouterModule,
     MaterialModule,
     ReactiveFormsModule,
-    MaterialModule,
     FormsModule,
     HttpClientModule
   ],
