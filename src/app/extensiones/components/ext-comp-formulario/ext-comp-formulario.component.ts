@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Contrato } from 'src/app/contrato/interface/contrato-listado.interfaces';
 
 @Component({
   selector: 'ext-comp-formulario',
@@ -7,4 +8,38 @@ import { Component } from '@angular/core';
 })
 export class ExtCompFormularioComponent {
 
+ public contratos: Contrato[] = [
+  {
+    dicon_codigo: 'M4758',
+    dicon_numero: '',
+    dicon_fecha_inicio: undefined,
+    dicon_fecha_firma: undefined,
+    dictp_codigo_tipo_contrato: 'Ductos',
+    dicon_cantidad: 0,
+    dicon_valor_total: 0,
+    dicon_cliente: '',
+    dicon_fecha_vencimiento: undefined,
+    dicon_estado: 'activo',
+    dicon_operadoraa: 'Movistar'
+  },
+  {
+    dicon_codigo: 'M3415',
+    dicon_numero: '',
+    dicon_fecha_inicio: undefined,
+    dicon_fecha_firma: undefined,
+    dictp_codigo_tipo_contrato: 'Postes',
+    dicon_cantidad: 0,
+    dicon_valor_total: 0,
+    dicon_cliente: '',
+    dicon_fecha_vencimiento: undefined,
+    dicon_estado: 'activo',
+    dicon_operadoraa: 'Netlife'
+  }
+ ];
+  
+ retornarFecha(fecha:Date){
+  console.log(typeof fecha);
+  console.log(fecha.toLocaleDateString() );
+  console.log(typeof fecha.toLocaleDateString() );
+ }
 }

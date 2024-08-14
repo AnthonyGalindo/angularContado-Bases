@@ -75,13 +75,11 @@ export class ContCompListaContratoComponent implements AfterViewInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  
   editarContrato(contrato: Contrato) {
     console.log( contrato );
     this.contratosService.contratoValue = contrato;
     this.router.navigate(['/contrato/cambiar']);
-    
   }
-
-  
 
 }
