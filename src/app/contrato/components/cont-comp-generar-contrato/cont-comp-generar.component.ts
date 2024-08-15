@@ -132,7 +132,13 @@ export class ContCompGenerarComponent {
       ruc: '12345378902',
       telefono1: '097864587',
       telefono2: '0478921',
-      direccion: 'av Bolivariana yRosa blANCA'
+      direccion: 'av Bolivariana yRosa blANCA',
+      responsable: {
+        nombres: 'Carlos Araque',
+        apellidos: '',
+        email: '',
+        telefono: ''
+      }
     },
     {
       idOperadora: 222,
@@ -140,7 +146,13 @@ export class ContCompGenerarComponent {
       ruc: '12345378902',
       telefono1: '097864587',
       telefono2: '0478921',
-      direccion: 'av Bolivariana yRosa blANCA'
+      direccion: 'av Bolivariana yRosa blANCA',
+      responsable: {
+        nombres: 'Marco Solis',
+        apellidos: '',
+        email: '',
+        telefono: ''
+      }
     }
   ]
   public provincias: Provincia[] = [

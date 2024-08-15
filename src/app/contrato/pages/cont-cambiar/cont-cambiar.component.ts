@@ -131,7 +131,13 @@ export class ContCambiarComponent implements OnInit {
       ruc: '12345378902',
       telefono1: '097864587',
       telefono2: '0478921',
-      direccion: 'av Bolivariana yRosa blANCA'
+      direccion: 'av Bolivariana yRosa blANCA',
+      responsable: {
+        nombres: ' Carlos Villagran',
+        apellidos: '',
+        email: '',
+        telefono: ''
+      }
     },
     {
       idOperadora: 222,
@@ -139,7 +145,13 @@ export class ContCambiarComponent implements OnInit {
       ruc: '12345378902',
       telefono1: '097864587',
       telefono2: '0478921',
-      direccion: 'av Bolivariana yRosa blANCA'
+      direccion: 'av Bolivariana yRosa blANCA',
+      responsable: {
+        nombres: 'Florinda Mesa',
+        apellidos: '',
+        email: '',
+        telefono: ''
+      }
     }
   ]
   public provincias: Provincia[] = [

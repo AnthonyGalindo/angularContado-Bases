@@ -18,6 +18,7 @@ export interface Operadora {
     telefono1: string ;
     telefono2 : string ;
     direccion : string ;
+    responsable?: Responsable;
     observacion ?: string ;
 }
 
@@ -32,7 +33,6 @@ export interface Responsable {
     email : string ;
     telefono : string ;
 }
-
 
 export interface listadoOperadora {
     position: string;

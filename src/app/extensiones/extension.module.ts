@@ -7,6 +7,7 @@ import { ExtEditarComponent } from './pages/ext-editar/ext-editar.component';
 import { ExtVisualizarComponent } from './pages/ext-visualizar/ext-visualizar.component';
 import { ExtCompFormularioComponent } from './components/ext-comp-formulario/ext-comp-formulario.component';
 import { ExtCompListadoComponent } from './components/ext-comp-listado/ext-comp-listado.component';
+import { ExtCompFormularioEditarComponent } from './components/ext-comp-formulario-editar/ext-comp-formulario-editar.component';
 
 
 
@@ -16,7 +17,8 @@ import { ExtCompListadoComponent } from './components/ext-comp-listado/ext-comp-
     ExtEditarComponent,
     ExtVisualizarComponent,
     ExtCompFormularioComponent,
-    ExtCompListadoComponent
+    ExtCompListadoComponent,
+    ExtCompFormularioEditarComponent
   ],
   imports: [
     CommonModule,

@@ -47,7 +47,6 @@
             <td mat-cell *matCellDef="let element" sortActionDescription="Sort by name" > {{ element.dictp_codigo_tipo_contrato}} </td>
         </ng-container>
     
-    
         <ng-container matColumnDef="dicon_valor_total">
             <th mat-header-cell *matHeaderCellDef> Total Anual </th>
             <td mat-cell *matCellDef="let element"> {{ element.dicon_valor_total | currency: 'USD' }} </td>
@@ -57,7 +56,6 @@
             <th mat-header-cell *matHeaderCellDef> Total Mes  </th>
             <td mat-cell *matCellDef="let element"> {{ (element.dicon_valor_total / 12) | currency: 'USD'  }} </td>
         </ng-container>
-    
     
         <ng-container matColumnDef="acciones">
 

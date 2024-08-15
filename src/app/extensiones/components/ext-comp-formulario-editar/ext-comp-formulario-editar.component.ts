@@ -1,17 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Contrato } from 'src/app/contrato/interface/contrato-listado.interfaces';
-import { OperadoraService } from 'src/app/operadora/services/operadora.service';
 
 @Component({
-  selector: 'ext-comp-formulario',
-  templateUrl: './ext-comp-formulario.component.html',
-  styleUrls: ['./ext-comp-formulario.component.css'],
+  selector: 'ext-comp-formulario-editar',
+  templateUrl: './ext-comp-formulario-editar.component.html',
+  styleUrls: ['./ext-comp-formulario-editar.component.css']
 })
-export class ExtCompFormularioComponent implements OnInit {
-  constructor( private operadoraService: OperadoraService ) {}
-
-  ngOnInit(): void {}
-  
+export class ExtCompFormularioEditarComponent {
+ 
   public contratos: Contrato[] = [
     {
       dicon_codigo: 'M4758',
@@ -40,6 +36,7 @@ export class ExtCompFormularioComponent implements OnInit {
       dicon_operadoraa: 'Netlife',
     },
   ];
+
   public retornarFecha(fecha: Date) {
     console.log(typeof fecha);
     console.log(fecha.toLocaleDateString());

@@ -5,6 +5,18 @@
   <h2 class="bg-blue fs-3 text-white  h-4rem align-items-center d-flex justify-content-center" > GENERAR EXTENSIONES </h2>
     <form class="text-center" >
 
+     <div>
+      <mat-form-field class="mt-2 ml-3 w-4 ">
+        <mat-label>Operadora</mat-label>
+        <mat-select>
+          <mat-option
+            *ngFor="let cont of contratos"
+            [value]="cont.dicon_codigo" >
+            {{ cont.dicon_codigo }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+     </div>
         <div >
           <mat-form-field class="mt-2 ml-3 w-4 ">
             <mat-label>Contrato</mat-label>
@@ -47,7 +59,7 @@
           <input type="number" matInput placeholder="Cantidad Verificada" />
         </mat-form-field>
         <mat-form-field  class="mt-2 ml-3 w-4">
-          <mat-label>Valor Unitario </mat-label>
+          <mat-label> Valor Unitario </mat-label>
           <input type="number" matInput placeholder="Valor Unitario" />
         </mat-form-field>
        </div>
