@@ -1,0 +1,27 @@
+.edit-operadora,
+.edit-representante {
+    cursor: pointer;
+}
+
+.edit-operadora:hover,
+.edit-representante:hover {
+    background-color: #2ECC71 !important;
+    transition-duration: 400ms;
+}
+
+ul li {
+    background-color: #235FBF;
+    color: #fff;
+}
+
+li {
+    border-radius: 100px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.cambioColor{
+    background-color: #2ECC71 !important;
+    color: black !important;
+}

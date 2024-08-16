@@ -20,7 +20,7 @@
         >
           <i class="d-flex align-items-center">
             <mat-icon> {{ matIcons[0].valor }} </mat-icon>
-            <span class="space"></span> Operadora
+            <span class="space"></span> OPERADORA
           </i>
         </a>
         <div class="collapse ms-5 operadora" #operadoraSubmenu #menu>
@@ -40,7 +40,7 @@
         >
           <i class="d-flex align-items-center">
             <mat-icon> {{ matIcons[1].valor }} </mat-icon>
-            <span class="space"></span> Contrato</i
+            <span class="space"></span> CONTRATO</i
           >
         </a>
         <div class="collapse ms-5 contrato" #contratoSubmenu #menu>
@@ -54,7 +54,7 @@
             routerLink="contrato/ver"
             routerLinkActive="active-link"
             class="list-group-item list-group-item-action text-light"
-            ><i class="fas fa-eye"></i> Visualizar
+            ><i class="fas fa-eye"></i> Contratos
           </a>
         </div>
 
@@ -65,7 +65,7 @@
         >
           <i class="d-flex align-items-center flex">
             <mat-icon> {{ matIcons[2].valor }} </mat-icon>
-            <span class="space"></span> Extensión Contrato</i
+            <span class="space"></span> EXTENSIÓN CONTRATO</i
           >
         </a>
         <div class="collapse ms-5 extencion" #extencionSubmenu #menu>
@@ -75,17 +75,12 @@
             class="list-group-item list-group-item-action text-light"
             ><i class="fas fa-car"></i> Generar
           </a>
-          <a
-            routerLink="extension/editar"
-            routerLinkActive="active-link"
-            class="list-group-item list-group-item-action text-light"
-            ><i class="fas fa-id-card"></i> Editar
-          </a>
+        
           <a
             routerLink="extension/ver"
             routerLinkActive="active-link"
             class="list-group-item list-group-item-action text-light"
-            ><i class="fas fa-fire-extinguisher"></i> Visualizar
+            ><i class="fas fa-fire-extinguisher"></i> Extensiones
           </a>
         </div>
 
@@ -96,12 +91,12 @@
         >
           <i class="d-flex align-items-center">
             <mat-icon> {{ matIcons[3].valor }} </mat-icon>
-            <span class="space"></span>Documentos
+            <span class="space"></span>DOCUMENTOS
           </i>
         </a>
         <div class="collapse ms-5 documento" #documentosSubmenu #menu>
           <a
-            routerLink="vehiculo-administracion"
+            routerLink="documento/generar"
             routerLinkActive="active-link"
             class="list-group-item list-group-item-action text-light"
           >
@@ -131,7 +126,7 @@
         >
           <i class="d-flex align-items-center">
             <mat-icon> {{ matIcons[4].valor }} </mat-icon>
-            <span class="space"> </span> Pagos</i
+            <span class="space"> </span> PAGOS </i
           >
         </a>
         <div class="collapse ms-5 pago" #pagosSubmenu #menu>

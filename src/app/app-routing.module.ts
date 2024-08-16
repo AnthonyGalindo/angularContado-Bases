@@ -22,6 +22,11 @@ const routes: Routes = [
   },
 
   {
+    path: 'documento',
+    loadChildren: () => import('./documento/documento.module').then(m => m.DocumentoModule)
+  },
+
+  {
     path: '**',
     redirectTo: 'operadora/admin'
   }

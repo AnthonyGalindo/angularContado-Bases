@@ -1,83 +1,80 @@
-
 mat-toolbar {
   /* background-color: #C7CCD3; */
   background-color: #b6caea;
-  
 }
- #wrapper {
+
+#wrapper {
   display: flex;
   flex-direction: row;
-  } 
-  
-  #sidebar-wrapper {
-    min-height: 100px;
-    width: 250px;
-    transition: margin 0.3s;
-    transition-duration: 0.4s;
-  }
-  
-  #page-content-wrapper {
-    flex: 1;
-    height: 100vh;
-    
-  }
+}
 
-   #sidebar-wrapper.toggled  {
-     margin-left: -250px;
-     transition-duration: 0.4s;
-    /* display: none; */
-  } 
-  .sidebar-color{
-    background-color: #235FBF;
-  }
+#sidebar-wrapper {
+  min-height: 100px;
+  width: 250px;
+  transition: margin 0.3s;
+  transition-duration: 0.4s;
+}
 
-  .list-group-item{
-    background-color: #235FBF;
-  }
+#page-content-wrapper {
+  flex: 1;
+  height: 100vh;
+}
 
-  .collapse {
-    height: 0;
-    overflow: hidden;
-  }
-  
-  .collapse.show {
-    height: auto;
-  }
+#sidebar-wrapper.toggled {
+  margin-left: -250px;
+  transition-duration: 0.4s;
+  /* display: none; */
+}
 
+.sidebar-color {
+  background-color: #235FBF;
+}
 
-  #sidebar-wrapper .logo {
+.list-group-item {
+  background-color: #235FBF;
+}
+
+.collapse {
+  height: 0;
+  overflow: hidden;
+}
+
+.collapse.show {
+  height: auto;
+}
+
+#sidebar-wrapper .logo {
   text-align: center;
   padding: 0.8rem 0.8rem;
-  }
+}
 
+.space {
+  width: 0.5rem;
+}
 
-  .space{
-    width: 0.5rem;
-  }
+.pantalla-primary {
+  background-color: #E1E3E8;
+  margin: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
 
-  .pantalla-primary{
-    background-color:  #E1E3E8;
-    margin:0;
-    min-width: 100%;
-    min-height: 100%;
-  }
+.list-group-flush a:hover {
+  /* background-color: rgb(54, 77, 97) !important; */
+  background-color: #2ECC71 !important;
+  color: rgb(13, 13, 15) !important;
+}
 
-  .list-group-flush a:hover {
-    /* background-color: rgb(54, 77, 97) !important; */
-    background-color: #2ECC71 !important;
-    color: rgb(13, 13, 15) !important;
-  }
+.menu-statico {
+  margin-left: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+}
 
-  .menu-statico{
-    margin-left: 0; 
-    position: fixed; 
-     top: 0; 
-    left: 0; 
-    width: 250px; 
-  }
-
-  .active-link{
-    /* background-color: rgb(54, 77, 97) !important; */
-    background-color: #2ECC71 !important;
-    color: rgb(13, 13, 15) !important;
-  }
+.active-link {
+  /* background-color: rgb(54, 77, 97) !important; */
+  background-color: #2ECC71 !important;
+  color: rgb(13, 13, 15) !important;
+}

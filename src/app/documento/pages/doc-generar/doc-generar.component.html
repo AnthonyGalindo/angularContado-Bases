@@ -1,0 +1,16 @@
+<div class=" mb-4">
+    <ul type="none" class="flex flex-row w-full m-0 p-0 ">
+      <li (click)="changeVentana(true)" class="w-6 p-2 m-2 edit-operadora"  [ngClass]="{'cambioColor': ventana }" >
+        Contrato
+      </li>
+      <li (click)="changeVentana(false)" class="w-6 p-2 m-2 edit-representante"  [ngClass]="{'cambioColor': !ventana }" >
+        Extension
+      </li>
+    </ul>
+</div>
+
+<doc-comp-subir-contrato  *ngIf="ventana; else otraVentana" ></doc-comp-subir-contrato>
+<ng-template #otraVentana>
+  <doc-comp-subir-extension ></doc-comp-subir-extension>
+</ng-template>
+

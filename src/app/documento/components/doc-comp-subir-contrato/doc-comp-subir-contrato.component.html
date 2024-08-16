@@ -1,0 +1,57 @@
+
+<form class="mat-elevation-z8">
+    <div>
+        <mat-form-field class="mt-2 ml-3 w-4 ">
+            <mat-label>Operadora</mat-label>
+            <mat-select>
+              <mat-option 
+                *ngFor="let tipo of tipoContratos"
+                [value]="tipo.tipo_id" >
+                {{ tipo.tipo_nombre }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="mt-2 ml-3 w-4 ">
+            <mat-label>Contrato</mat-label>
+            <mat-select>
+              <mat-option 
+                *ngFor="let tipo of tipoContratos"
+                [value]="tipo.tipo_id" >
+                {{ tipo.tipo_nombre }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field class="mt-2 ml-3 w-4 ">
+            <mat-label>Tipo de contrato</mat-label>
+            <mat-select>
+              <mat-option 
+                *ngFor="let tipo of tipoContratos"
+                [value]="tipo.tipo_id" >
+                {{ tipo.tipo_nombre }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- <mat-form-field>
+            <mat-label>Documento Contrato</mat-label>
+            
+			
+          </mat-form-field> -->
+    </div>
+    <div>
+        <mat-form-field class="mt-2 ml-3 w-4 ">
+            <mat-label>Nombre</mat-label>
+            <input  type="text" matInput placeholder="Nombre">
+        </mat-form-field>
+
+        <mat-form-field class="mt-2 ml-3 w-4 ">
+            <mat-label>Descripción</mat-label>
+            <input  type="text" matInput placeholder="Nombre">
+        </mat-form-field>
+
+    </div>
+</form>

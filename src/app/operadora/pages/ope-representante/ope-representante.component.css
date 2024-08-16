@@ -1,23 +1,26 @@
 h3{
-    background-color: #2ecc706c;
+    background-color: #2be779bc;
     padding: 0.3rem;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-style: normal;
 
+
 }
 .content-representante-per {
-    background: linear-gradient(to right, #10bb9e, #1f56af);
+    background: linear-gradient(to right, #235FBF, #1f56af);
     
 }
 
 .btn-naranja {
-    background-color: #235FBF !important;
+    background-color: #2ecc706c !important;
+    color: black;
     transition: background-color 500ms ease-in-out;
 }
 
 .btn-naranja:hover {
     background-color: #F39C12 !important;
+    color: black;
 }
 
 

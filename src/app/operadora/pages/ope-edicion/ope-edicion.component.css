@@ -1,10 +1,5 @@
-ul li:first-child {
-    background-color: #2ECC71;
-    
-}
-
-ul :nth-child(2){
-    background-color: #34495E;
+ul li {
+    background-color: #235FBF;
     color: #fff;
 }
 
@@ -15,6 +10,17 @@ li {
     font-weight: 500;
 }
 
+.cambioColor{
+    background-color: #2ECC71 !important;
+    color: black !important;
+}
+
+li {
+    border-radius: 100px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
 
 .content-representant{
 
@@ -34,7 +40,7 @@ li {
 /* TODO  PEGO ESTO AUI */
 
 h3{
-    background-color: #2ecc706c;
+    background-color: #2be779bc;
     padding: 0.3rem;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
@@ -54,11 +60,12 @@ h3{
 }
 
 .btn-naranja {
-    background-color: #34495E !important;
+    background-color: #235FBF !important;
     transition: background-color 500ms ease-in-out;
 }
 
 .btn-naranja:hover {
     background-color: #F39C12 !important;
+    color: black;
 }
 
