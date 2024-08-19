@@ -1,0 +1,112 @@
+<div class="table-responsive content-listado mat-elevation-z8">
+
+  <div class="text-end">
+    <mat-form-field class="mt-4 ml-3 w-4">
+      <mat-label>Operadora</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let tipo of operdadora" [value]="tipo.tipo_id">
+          {{ tipo.tipo_nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="mt-4 ml-3 w-4">
+      <mat-label>NºContrato</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let tipo of operdadora" [value]="tipo.tipo_id">
+          {{ tipo.tipo_nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="row" *ngIf="contratos">
+    <mat-form-field class="col-3">
+      <mat-label>Filtro</mat-label>
+      <input
+        matInput
+        (keyup)="aplicarFiltro($event)"
+        placeholder="Busqueda"
+        #input
+      />
+    </mat-form-field>
+
+    <mat-paginator
+      class="col-9"
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Seleccione una pagina"
+    >
+    </mat-paginator>
+
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cantidad_v">
+        <th mat-header-cell *matHeaderCellDef>Cantidad_v</th>
+        <td mat-cell *matCellDef="let element">{{ element.cantidad_v }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cantidad">
+        <th mat-header-cell *matHeaderCellDef>cantidad</th>
+        <td mat-cell *matCellDef="let element">{{ element.cantidad }}</td>
+      </ng-container>
+      <ng-container matColumnDef="cantidadTotal">
+        <th mat-header-cell *matHeaderCellDef>cantidadTotal</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.cantidad_v + 100 }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="autorizacion">
+        <th mat-header-cell *matHeaderCellDef>Autorización</th>
+        <td mat-cell *matCellDef="let element">{{ element.autorizacion }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef>Fecha</th>
+        <td mat-cell *matCellDef="let element">{{ element.fecha }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="v_unitario">
+        <th mat-header-cell *matHeaderCellDef>V.Unitario</th>
+        <td mat-cell *matCellDef="let element">{{ element.v_unitario }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="total_mensual">
+        <th mat-header-cell *matHeaderCellDef>Total_Mensual</th>
+        <td mat-cell *matCellDef="let element">
+          {{
+            (element.cantidad_v === 0
+              ? element.v_unitario * element.cantidad
+              : element.cantidad_v * element.v_unitario) / 12 | currency : "USD"
+          }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total_anual">
+        <th mat-header-cell *matHeaderCellDef>Total_Anual</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.v_unitario * element.cantidad_v | currency : "USD" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button><mat-icon>preview</mat-icon></button>
+          <button mat-icon-button (click)="editarContrato(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button><mat-icon>delete</mat-icon></button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

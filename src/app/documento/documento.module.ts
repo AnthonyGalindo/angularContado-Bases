@@ -7,6 +7,10 @@ import { DocVisualizarComponent } from './pages/doc-visualizar/doc-visualizar.co
 import { DocCompSubirContratoComponent } from './components/doc-comp-subir-contrato/doc-comp-subir-contrato.component';
 import { DocCompSubirExtensionComponent } from './components/doc-comp-subir-extension/doc-comp-subir-extension.component';
 import { MaterialModule } from '../material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DocCompListadoContratosComponent } from './components/doc-comp-listado-contratos/doc-comp-listado-contratos.component';
+import { DocCompListadoExtensionesComponent } from './components/doc-comp-listado-extensiones/doc-comp-listado-extensiones.component';
 
 
 @NgModule({
@@ -15,12 +19,17 @@ import { MaterialModule } from '../material/material.module';
     DocCambiarComponent,
     DocVisualizarComponent,
     DocCompSubirContratoComponent,
-    DocCompSubirExtensionComponent
+    DocCompSubirExtensionComponent,
+    DocCompListadoContratosComponent,
+    DocCompListadoExtensionesComponent
   ],
   imports: [
     CommonModule,
     DocumentoRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
+    
   ]
 })
 export class DocumentoModule { }

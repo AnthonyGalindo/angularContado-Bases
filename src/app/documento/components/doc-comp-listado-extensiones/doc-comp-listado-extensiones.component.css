@@ -1,0 +1,14 @@
+.content-listado{
+    width: 100%;
+    background-color: #ffffff;
+    padding: 1rem;
+  }
+
+  th {
+    background-color: #235FBF !important;
+    color: hwb(180 94% 0%);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  th, td {
+    padding: 0.6rem ;
+  }

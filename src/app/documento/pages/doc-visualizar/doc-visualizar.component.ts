@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./doc-visualizar.component.css']
 })
 export class DocVisualizarComponent {
+  ventana: boolean = true;
 
+  changeVentana(response: boolean) {
+    this.ventana = response;
+  }
+  
 }
