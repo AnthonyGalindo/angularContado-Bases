@@ -2,11 +2,12 @@ import { Component, VERSION } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'doc-cambiar',
-  templateUrl: './doc-cambiar.component.html',
-  styleUrls: ['./doc-cambiar.component.css']
+  selector: 'doc-cambiar-ext',
+  templateUrl: './doc-cambiar-ext.component.html',
+  styleUrls: ['./doc-cambiar-ext.component.css']
 })
-export class DocCambiarComponent {
+export class DocCambiarExtComponent {
+
   public tipoContratos = [
     {
       tipo_id: '1224qwe',

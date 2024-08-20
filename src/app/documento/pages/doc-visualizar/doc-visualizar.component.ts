@@ -7,9 +7,13 @@ import { Component } from '@angular/core';
 })
 export class DocVisualizarComponent {
   ventana: boolean = true;
+  varRuta: string = 'CONTRATO';
 
   changeVentana(response: boolean) {
     this.ventana = response;
+    (!this.ventana) ? this.varRuta = 'EXTENSION' : this.varRuta = 'CONTRATO';
   }
+
+
   
 }

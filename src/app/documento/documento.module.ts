@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DocCompListadoContratosComponent } from './components/doc-comp-listado-contratos/doc-comp-listado-contratos.component';
 import { DocCompListadoExtensionesComponent } from './components/doc-comp-listado-extensiones/doc-comp-listado-extensiones.component';
+import { DocCambiarExtComponent } from './pages/doc-cambiar-ext/doc-cambiar-ext.component';
+import { DocumentoEditService } from './services/documento-edit.service';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { DocCompListadoExtensionesComponent } from './components/doc-comp-listad
     DocCompSubirContratoComponent,
     DocCompSubirExtensionComponent,
     DocCompListadoContratosComponent,
-    DocCompListadoExtensionesComponent
+    DocCompListadoExtensionesComponent,
+    DocCambiarExtComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +32,9 @@ import { DocCompListadoExtensionesComponent } from './components/doc-comp-listad
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    
-  ]
+  ],
+  providers:[
+    DocumentoEditService
+  ],
 })
 export class DocumentoModule { }

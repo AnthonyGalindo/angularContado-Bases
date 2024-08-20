@@ -23,12 +23,12 @@ constructor(private router:Router) {}
 dataSource = new MatTableDataSource<any>();
 displayedColumns: string[] = ['id','cantidad', 'cantidad_v', 'cantidadTotal', 'v_unitario','total_mensual', 'total_anual', 'autorizacion','fecha','acciones'];
 
-aplicarFiltro(event: Event) {
+public aplicarFiltro(event: Event) {
   const filterValue = (event.target as HTMLInputElement).value;
   this.dataSource.filter = filterValue.trim().toLowerCase();
 }
 
-editarContrato(extension:any) {
+public editarContrato(extension:any) {
   console.log('veamosd'); 
   console.log(extension);
   this.router.navigateByUrl('/extension/editar');

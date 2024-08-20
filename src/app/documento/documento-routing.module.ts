@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { DocGenerarComponent } from "./pages/doc-generar/doc-generar.component";
 import { DocCambiarComponent } from "./pages/doc-cambiar/doc-cambiar.component";
 import { DocVisualizarComponent } from "./pages/doc-visualizar/doc-visualizar.component";
+import { DocCambiarExtComponent } from "./pages/doc-cambiar-ext/doc-cambiar-ext.component";
 
 const routes: Routes = [
     {
@@ -12,6 +13,10 @@ const routes: Routes = [
     {
         path: 'cambiar',
         component: DocCambiarComponent
+    },
+    {
+        path: 'cambiar-ext',
+        component: DocCambiarExtComponent
     },
     {
         path: 'ver',
