@@ -1,5 +1,7 @@
 import { Component, VERSION } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DocumentoEditService } from '../../services/documento-edit.service';
+import { DocumentoContrato } from '../../interfaces/documento.interface';
 
 @Component({
   selector: 'doc-cambiar',
@@ -7,13 +9,32 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./doc-cambiar.component.css']
 })
 export class DocCambiarComponent {
+
+  private documentoContrato ?: DocumentoContrato ;
+  constructor(private editSer: DocumentoEditService,
+    private fb : FormBuilder
+  ) {}
+  ngOnInit() {
+    this.documentoContrato = this.editSer.gdocumentosContrato;
+    this.llenarFormulario();
+  }
+  private llenarFormulario() {
+    this.formEditDocCont.get('nombre_documento')?.setValue(this.documentoContrato?.documento);
+    this.formEditDocCont.get('descripcion_documento')?.setValue(this.documentoContrato?.descripcion);
+    this.formEditDocCont.get('tipo_contrato')?.setValue(this.documentoContrato?.tipo_documento);
+  }
+  public formEditDocCont: FormGroup = this.fb.group({
+    tipo_contrato: [''],
+    nombre_documento: [''],
+    descripcion_documento:[''],
+  });
   public tipoContratos = [
     {
-      tipo_id: '1224qwe',
-      tipo_nombre: 'Contrato de Alquiler',
+      tipo_documento: 'tipo-3',
+      tipo_nombre: 'Contrato escojido',
     },
     {
-      tipo_id: '777887qr',
+      tipo_documento: 'tipo-2',
       tipo_nombre: 'Contrato de Extension',
     },
   ];
@@ -30,7 +51,7 @@ export class DocCambiarComponent {
       const count = l.length > 1 ? `(+${l.length - 1} files)` : '';
       this.display.patchValue(`${f.name}${count}`);
     } else {
-      this.display.patchValue('');
+      this.display.patchValue('');     
     }
   }
 
@@ -42,4 +63,5 @@ export class DocCambiarComponent {
       this.file_list.push(this.file_store[i].name);
     }
   }
+
 }

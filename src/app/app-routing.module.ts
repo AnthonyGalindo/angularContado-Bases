@@ -27,6 +27,11 @@ const routes: Routes = [
   },
 
   {
+    path: 'pago',
+    loadChildren: () => import('./pago/pago.module').then(m => m.PagoModule  )
+  },
+
+  {
     path: '**',
     redirectTo: 'operadora/admin'
   }

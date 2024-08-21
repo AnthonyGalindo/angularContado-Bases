@@ -5,7 +5,7 @@ import { DocumentoContrato } from '../interfaces/documento.interface';
 @Injectable({providedIn: 'root'})
 export class DocumentoEditService {
 
-    private documntoContrato: DocumentoContrato = {
+    private documentoContrato: DocumentoContrato = {
         ncontrato: '',
         tipo_documento: '',
         documento: '',
@@ -14,15 +14,14 @@ export class DocumentoEditService {
     }
 
     
-    public get documentoContratoo() : DocumentoContrato {
+    public get gdocumentosContrato() : DocumentoContrato {
         return this.documentoContrato;
     }
 
     
-    public set documentoContrato( ele: DocumentoContrato) {
+    public set sdocumentosContrato( ele: DocumentoContrato) {
         this.documentoContrato = ele;
     }
-    
     
 
     constructor() { }

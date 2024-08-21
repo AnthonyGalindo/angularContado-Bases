@@ -4,16 +4,11 @@
   </div>
   <ol _ngcontent-egs-c125="" class="breadcrumb">
     <li aria-current="page" class="breadcrumb-item">
-      <a  routerLink="/contrato/ver" 
-        >INICIO</a
-      >
+      <a  routerLink="/contrato/ver">INICIO</a>
     </li>
     <li aria-current="page" class="breadcrumb-item">
-      <a   
-        >EDITAR</a
-      >
+      <a>EDITAR</a>
     </li>
-    
   </ol>
 </nav>
 
@@ -43,7 +38,7 @@
     <mat-form-field class="mt-2 ml-3 w-3 mr-4 ">
       <mat-label>Tipo de Contrato</mat-label>
       <mat-select (valueChange)="recalcular($event , 'select')" formControlName="selected_tipo_Contrato" #tipoContrat  >
-        <mat-option *ngFor= "let tipo of tipoContrato"   [value]= "tipo.valorUnitario"  >
+        <mat-option *ngFor= "let tipo of tipoContrato"   [value]= "tipo.valorUnitario" >
           {{ tipo.nombre }}
         </mat-option>
       </mat-select>

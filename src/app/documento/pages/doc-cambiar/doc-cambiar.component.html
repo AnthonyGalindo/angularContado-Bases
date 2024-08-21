@@ -17,7 +17,7 @@
   </ol>
 </nav>
 
-<form class="mat-elevation-z8 text-center">
+<form [formGroup]="formEditDocCont" (ngSubmit)="handleSubmit()" class="mat-elevation-z8 text-center">
 
     <div class="p-3 d-flex justify-content-center titulo">
         EDITAR DOCUMENTO CONTRATO
@@ -26,7 +26,7 @@
     <mat-form-field class="mt-4 ml-3 w-4">
       <mat-label>Operadora</mat-label>
       <mat-select>
-        <mat-option *ngFor="let tipo of tipoContratos" [value]="tipo.tipo_id">
+        <mat-option *ngFor="let tipo of tipoContratos" [value]="tipo.tipo_documento">
           {{ tipo.tipo_nombre }}
         </mat-option>
       </mat-select>
@@ -35,7 +35,7 @@
     <mat-form-field class="mt-2 ml-3 w-4">
       <mat-label>Contrato</mat-label>
       <mat-select>
-        <mat-option *ngFor="let tipo of tipoContratos" [value]="tipo.tipo_id">
+        <mat-option *ngFor="let tipo of tipoContratos" [value]="tipo.tipo_documento">
           {{ tipo.tipo_nombre }}
         </mat-option>
       </mat-select>
@@ -45,8 +45,8 @@
   <div>
     <mat-form-field class="mt-2 ml-3 w-4">
       <mat-label>Tipo de contrato</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let tipo of tipoContratos" [value]="tipo.tipo_id">
+      <mat-select formControlName="tipo_contrato">
+        <mat-option *ngFor="let tipo of tipoContratos" [value]="tipo.tipo_documento">
           {{ tipo.tipo_nombre }}
         </mat-option>
       </mat-select>
@@ -71,11 +71,11 @@
   <div>
     <mat-form-field class="mt-2 ml-3 w-4">
       <mat-label>Nombre</mat-label>
-      <input type="text" matInput placeholder="Nombre" />
+      <input type="text" matInput placeholder="Nombre" formControlName="nombre_documento" />
     </mat-form-field>
     <mat-form-field class="mt-2 ml-3 w-4">
       <mat-label>Descripción</mat-label>
-      <input type="text" matInput placeholder="Nombre" />
+      <input type="text" matInput placeholder="Nombre" formControlName="descripcion_documento"/>
     </mat-form-field>
   </div>
   <div>

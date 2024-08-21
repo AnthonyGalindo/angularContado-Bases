@@ -34,21 +34,20 @@ export class DocCompListadoContratosComponent  {
     this.dataSource.paginator = this.paginator;
   }
 
-
   ngOnInit(): void {
     this.dataSource.data = [ 
-      {ncontrato:'cont-148', tipo_documento:'tipo-3', documento:'contrato.doc45',descripcion: '...' , fecha:new Date().toLocaleDateString() },
-      {ncontrato:'cont-1457',tipo_documento:'tipo-3', documento:'contrato.exel', descripcion: '...' , fecha:new Date().toLocaleDateString() },
-      {ncontrato:'cont-149', tipo_documento:'tipo-3', documento:'contrato.algo', descripcion: '...' , fecha:new Date().toLocaleDateString() },
-      {ncontrato:'cont-1410',tipo_documento:'tipo-1', documento:'contrato.doc1', descripcion: '...' , fecha:new Date().toLocaleDateString() },
-      {ncontrato:'cont-1411',tipo_documento:'tipo-1', documento:'contrato.doc2', descripcion: '...' , fecha:new Date().toLocaleDateString() },
-      {ncontrato:'cont-1411',tipo_documento:'tipo-1', documento:'contrato.doc3', descripcion: '...' , fecha:new Date().toLocaleDateString() },
-      {ncontrato:'cont-1411',tipo_documento:'tipo-1', documento:'contrato.doc4', descripcion: '...' , fecha:new Date().toLocaleDateString() },
-      {ncontrato:'cont-1411',tipo_documento:'tipo-1', documento:'contrato.doc5', descripcion: '...' , fecha:new Date().toLocaleDateString() },
-      {ncontrato:'cont-1411',tipo_documento:'tipo-1', documento:'contrato.doc6', descripcion: '...' , fecha:new Date().toLocaleDateString() },
-      {ncontrato:'cont-1411',tipo_documento:'tipo-1', documento:'contrato.doc7', descripcion: '...' , fecha:new Date().toLocaleDateString() },
-      {ncontrato:'cont-1411',tipo_documento:'tipo-1', documento:'contrato.doc8', descripcion: '...' , fecha:new Date().toLocaleDateString() },
-      {ncontrato:'cont-1411',tipo_documento:'tipo-1', documento:'contrato.doc9', descripcion: '...' , fecha:new Date().toLocaleDateString() },
+      { cod:'doc-1cc',ncontrato:'cont-148', tipo_documento:'tipo-3', documento:'contrato.doc45',descripcion: '...' , fecha:new Date().toLocaleDateString() },
+      { cod:'doc-2cc',ncontrato:'cont-1457',tipo_documento:'tipo-3', documento:'contrato.exel', descripcion: '...' , fecha:new Date().toLocaleDateString() },
+      { cod:'doc-3cc',ncontrato:'cont-149', tipo_documento:'tipo-3', documento:'contrato.algo', descripcion: '...' , fecha:new Date().toLocaleDateString() },
+      { cod:'doc-4cc',ncontrato:'cont-1410',tipo_documento:'tipo-1', documento:'contrato.doc1', descripcion: '...' , fecha:new Date().toLocaleDateString() },
+      { cod:'doc-5cc',ncontrato:'cont-1411',tipo_documento:'tipo-1', documento:'contrato.doc2', descripcion: '...' , fecha:new Date().toLocaleDateString() },
+      { cod:'doc-1cc',ncontrato:'cont-1411',tipo_documento:'tipo-1', documento:'contrato.doc3', descripcion: '...' , fecha:new Date().toLocaleDateString() },
+      { cod:'doc-1cc',ncontrato:'cont-1411',tipo_documento:'tipo-1', documento:'contrato.doc4', descripcion: '...' , fecha:new Date().toLocaleDateString() },
+      { cod:'doc-1cc',ncontrato:'cont-1411',tipo_documento:'tipo-1', documento:'contrato.doc5', descripcion: '...' , fecha:new Date().toLocaleDateString() },
+      { cod:'doc-1cc',ncontrato:'cont-1411',tipo_documento:'tipo-1', documento:'contrato.doc6', descripcion: '...' , fecha:new Date().toLocaleDateString() },
+      { cod:'doc-1cc',ncontrato:'cont-1411',tipo_documento:'tipo-1', documento:'contrato.doc7', descripcion: '...' , fecha:new Date().toLocaleDateString() },
+      { cod:'doc-1cc',ncontrato:'cont-1411',tipo_documento:'tipo-1', documento:'contrato.doc8', descripcion: '...' , fecha:new Date().toLocaleDateString() },
+      { cod:'doc-1cc',ncontrato:'cont-1411',tipo_documento:'tipo-1', documento:'contrato.doc9', descripcion: '...' , fecha:new Date().toLocaleDateString() },
      ]
   }
 
@@ -64,7 +63,7 @@ public editarContrato(elemento:DocumentoContrato) {
   console.log(elemento);
   // this.docEdit.documentoContrato = elemento;ng 
   
-  
+  this.docEdit.sdocumentosContrato = elemento ;
   this.router.navigateByUrl('/documento/cambiar');
 }
 
