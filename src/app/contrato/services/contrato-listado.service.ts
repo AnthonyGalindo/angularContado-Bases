@@ -9,7 +9,7 @@ import { DatePipe, JsonPipe } from '@angular/common';
 @Injectable({ providedIn: 'root' })
 export class ContratosService {
 
-  constructor(private http: HttpClient , private pipee:DatePipe) {}
+  constructor(private http: HttpClient ) {}
     private contrato!:Contrato;
     
     public set contratoValue(cont : Contrato) {
@@ -23,7 +23,7 @@ export class ContratosService {
     MisContratos: Contrato[] = [
     {
         dicon_codigo: '12',
-        dicon_numero: '457ms',
+        dicon_numero: 'CONT-1',
         dicon_fecha_inicio: new Date(1,1,2021),
         dicon_fecha_firma: new Date(),
         dicon_fecha_vencimiento: new Date(4,9,2021),
@@ -36,7 +36,7 @@ export class ContratosService {
     },
     {
         dicon_codigo: '13',
-        dicon_numero: '45a7ms',
+        dicon_numero: 'CONT-2',
         dicon_fecha_inicio: new Date(2,1,2021),
         dicon_fecha_vencimiento: new Date(5,10,2022),
         dicon_fecha_firma:  new Date(2024, 7, 7),
@@ -50,7 +50,7 @@ export class ContratosService {
     },
     {
         dicon_codigo: '14',
-        dicon_numero: '457ms',
+        dicon_numero: 'CONT-3',
         dicon_fecha_inicio: new Date(8,5,2023),
         dicon_fecha_vencimiento: new Date(7,7,2024),
         dicon_fecha_firma: new Date(),
@@ -62,10 +62,10 @@ export class ContratosService {
         dicon_observaciones: 'todo preparado y listo para que funcione todo eldia de hoy',
         dicon_operadoraa: "Movistar",
 
-    },
+    },     
     {
         dicon_codigo: '14',
-        dicon_numero: '457ms',
+        dicon_numero: 'CONT-4',
         dicon_fecha_inicio: new Date(4,1,2018),
         dicon_fecha_vencimiento: new Date(4,9,2020),
         dicon_fecha_firma: new Date(),
@@ -79,7 +79,7 @@ export class ContratosService {
     },
     {
         dicon_codigo: '14',
-        dicon_numero: '457ms',
+        dicon_numero: 'CONT-5',
         dicon_fecha_inicio: new Date(5,1,2022),
         dicon_fecha_vencimiento: new Date(28,2,2024),
         dicon_fecha_firma: new Date(),
@@ -93,7 +93,7 @@ export class ContratosService {
     },
     {
         dicon_codigo: '14',
-        dicon_numero: '457ms',
+        dicon_numero: 'CONT-6',
         dicon_fecha_inicio: new Date(1,2,2019),
         dicon_fecha_vencimiento: new Date(4,9,2020),
         dicon_fecha_firma: new Date(),
@@ -107,7 +107,7 @@ export class ContratosService {
     },
     {
         dicon_codigo: '14',
-        dicon_numero: '457ms',
+        dicon_numero: 'CONT-7',
         dicon_fecha_inicio: new Date(9,4,2020),
         dicon_fecha_vencimiento: new Date(21,6,2020),
         dicon_fecha_firma: new Date(),

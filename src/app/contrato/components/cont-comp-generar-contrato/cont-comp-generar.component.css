@@ -35,7 +35,15 @@ mat-checkbox{
     -webkit-overflow-scrolling: touch;
   }
 
+  h2{
+    font-size: 1.4rem;
+    font-weight: 600;
+   
+  }
+
+
   
+
   
   @media only screen and (max-width: 768px) {
     /* Ajustes para pantallas pequeñas */

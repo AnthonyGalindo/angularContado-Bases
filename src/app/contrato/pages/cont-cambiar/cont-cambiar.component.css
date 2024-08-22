@@ -14,10 +14,10 @@ background-color: #235FBF !important;
 font-family: 'Times New Roman', Times, serif;
 }
 
-.tamanio {
+/* .tamanio {
     font-size: 1.1rem !important;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
-}
+} */
 
 .btn-color {
     background-color: #235FBF;
@@ -25,6 +25,12 @@ font-family: 'Times New Roman', Times, serif;
 
 mat-checkbox{
     margin: 0 !important;
+}
+h2 {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 550;
+  
 }
 
 

@@ -8,6 +8,8 @@ import { PagoEditarComponent } from './pages/pago-editar/pago-editar.component';
 import { PagoCompGenerarComponent } from './components/pago-comp-generar/pago-comp-generar.component';
 import { PagoCompListadoComponent } from './components/pago-comp-listado/pago-comp-listado.component';
 import { MaterialModule } from '../material/material.module';
+import { ContratosService } from '../contrato/services/contrato-listado.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -21,7 +23,11 @@ import { MaterialModule } from '../material/material.module';
   imports: [
     CommonModule,
     PagoRoutingModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
+  ],
+  providers: [
+    ContratosService
   ]
 })
 export class PagoModule { }

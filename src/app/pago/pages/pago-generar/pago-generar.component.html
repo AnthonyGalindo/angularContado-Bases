@@ -1,26 +1,111 @@
 <p>pago-generar works!</p>
 
-<form>
-    <div>
-        <mat-form-field>
-            <mat-label>Comprobante</mat-label>
-            <input type="text" matInput placeholder="Comprobante" >
-        </mat-form-field>
-    </div>
+<form class="w-full mat-elevation-z8">
+  <div class="p-3 d-flex justify-content-center titulo mb-3">
+    GENERAR PAGOS
+ <div>
+  <svg
+  xmlns="http://www.w3.org/2000/svg"
+  height="1.5rem"
+  viewBox="0 -870 960 960"
+  width="1.5rem"
+  fill="#fff"
+  class="m-0 p-0 ml-3 "
+>
+  <path
+    d="M240-160q-66 0-113-47T80-320v-320q0-66 47-113t113-47h480q66 0 113 47t47 113v320q0 66-47 113t-113 47H240Zm0-480h480q22 0 42 5t38 16v-21q0-33-23.5-56.5T720-720H240q-33 0-56.5 23.5T160-640v21q18-11 38-16t42-5Zm-74 130 445 108q9 2 18 0t17-8l139-116q-11-15-28-24.5t-37-9.5H240q-26 0-45.5 13.5T166-510Z"
+  />
+</svg>
+ </div>
+  </div>
+  <div class="d-flex justify-content-end mr-6">
+    <mat-form-field class="mr-3">
+      <mat-label>NºContrato</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let cont of contratos" [value]="cont.dicon_codigo">
+          {{ cont.dicon_numero }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-    <div>
+    <mat-form-field>
+      <mat-label>NºContrato</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let cont of contratos" [value]="cont.dicon_codigo">
+          {{ cont.dicon_numero }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="mr-3">
+      <div>
         <mat-form-field>
-            <mat-label>Referancia</mat-label>
-            <input type="text" matInput placeholder="Referencia">
+          <mat-label>Comprobante</mat-label>
+          <input type="text" matInput placeholder="Comprobante" />
         </mat-form-field>
-    </div>
+      </div>
 
-    <div>
+      <div>
         <mat-form-field>
-            <mat-label>nose</mat-label>
-            <mat-select>
-                <mat-option></mat-option>
-            </mat-select>
+          <mat-label>Referencia</mat-label>
+          <input type="text" matInput placeholder="Referencia" />
         </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Tipo pago</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let tipo of tipo_pago" [value]="tipo.TIPPAG_ID">
+              {{ tipo.TIPPAG_NOMBRE }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Observaciones</mat-label>
+          <input type="text" matInput placeholder="Observaciones" />
+        </mat-form-field>
+      </div>
     </div>
+    <div>
+      <div>
+        <mat-form-field class="">
+          <mat-label>Fecha de Inicio</mat-label>
+          <input matInput [matDatepicker]="picker" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="">
+          <mat-label>Fecha Pago Desde</mat-label>
+          <input matInput [matDatepicker]="picker2" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <mat-form-field class="">
+        <mat-label>Fecha Pago Hasta</mat-label>
+        <input matInput [matDatepicker]="picker3" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker3"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
 </form>

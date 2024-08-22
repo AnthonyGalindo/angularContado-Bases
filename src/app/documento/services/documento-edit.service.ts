@@ -12,17 +12,14 @@ export class DocumentoEditService {
         descripcion: '',
         fecha: ''
     }
-
     
     public get gdocumentosContrato() : DocumentoContrato {
         return this.documentoContrato;
     }
-
     
     public set sdocumentosContrato( ele: DocumentoContrato) {
         this.documentoContrato = ele;
     }
-    
 
     constructor() { }
     
