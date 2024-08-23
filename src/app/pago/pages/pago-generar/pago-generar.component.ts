@@ -12,6 +12,7 @@ import { Contrato } from 'src/app/contrato/interface/contrato-listado.interfaces
 export class PagoGenerarComponent {
   public tipo_pago: TIPO_PAGO[] = [];
   public contratos: Contrato[] = [];
+  public total = 0;
 
   constructor(private tipoPagoSer: TipoPagoService,
    private contratoSer:ContratosService,

@@ -57,7 +57,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatCheckboxModule,
     MatDialogModule,
     MatExpansionModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
   providers: [ {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},]
 })
