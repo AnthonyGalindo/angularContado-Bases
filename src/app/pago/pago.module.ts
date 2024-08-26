@@ -10,6 +10,7 @@ import { PagoCompListadoComponent } from './components/pago-comp-listado/pago-co
 import { MaterialModule } from '../material/material.module';
 import { ContratosService } from '../contrato/services/contrato-listado.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     PagoRoutingModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     ContratosService
