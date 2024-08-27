@@ -17,67 +17,74 @@ export class PagoGenerarComponent {
   public total = 0;
 
   constructor(
-   private fb: FormBuilder,
-   private tipoPagoSer: TipoPagoService,
-   private contratoSer: ContratosService,
+    private fb: FormBuilder,
+    private tipoPagoSer: TipoPagoService,
+    private contratoSer: ContratosService
   ) {}
 
   ngOnInit() {
     this.tipo_pago = this.tipoPagoSer.gtipo_pago;
     this.contratos = this.contratoSer.getContratos;
+   
+    this.formPago.get('fecha_pago_inicio') ?.setValue( new Date(
+          this.getFecInicio().getFullYear(),
+          this.getFecInicio().getMonth(),
+          this.getFecInicio().getUTCDate() ) );
+      console.log( this.getFecInicio().getFullYear(),
+      this.getFecInicio().getMonth(),
+      this.getFecInicio().getUTCDate() );  
+      this.calcular();
   }
 
   formPago = this.fb.group({
-    fecha_pago_hasta: [new Date || null],
-    n_meses : [0]
+    fecha_pago_inicio: [new Date()],
+    fecha_pago_now: [new Date() || null],
+    n_meses: [0],
   });
 
   sendFormularioPago() {
-    console.log( this.formPago.get('fecha_pago_hasta')?.value );
-    let vfecha_pago_hasta: Date | null = this.formPago.get('fecha_pago_hasta')!.value  ;
-    const meses = vfecha_pago_hasta!.getMonth() + 1 ;
+    console.log(this.formPago.get('fecha_pago_inicio')?.value);
+    let vfecha_pago_hasta: Date | null =
+      this.formPago.get('fecha_pago_inicio')!.value;
+    const meses = vfecha_pago_hasta!.getMonth() + 1;
+    this.calcular();
+  }
 
-  this.calcular();
-  };
-
-  private calcularMesesCompletos(fechaInicio: Date | null, fechaActual: Date): string {
-
-    if(fechaInicio === null) {
+  private calcularMesesCompletos( fechaInicio: Date | null, fechaActual: Date): string {
+    if (fechaInicio === null) {
       this.formPago.value.n_meses = 0;
       return '';
-    } 
-    if(fechaActual < fechaInicio){
+    }
+    if (fechaActual < fechaInicio) {
       this.formPago.value.n_meses = 0;
       return '0';
     }
     // Calcular la diferencia de años y meses entre las fechas
     const diferenciaAnios = fechaActual.getFullYear() - fechaInicio.getFullYear();
-    const diferenciaMeses  = fechaActual.getMonth() - fechaInicio.getMonth() + diferenciaAnios * 12;
+    const diferenciaMeses = fechaActual.getMonth() - fechaInicio.getMonth() + diferenciaAnios * 12;
     // Ajuste si el día del mes actual es menor que el día de inicio
-    if (fechaActual.getDate() < fechaInicio.getDate()) {
-      this.formPago.get('n_meses')?.setValue(diferenciaMeses);
-      return `Han pasado ${diferenciaMeses - 1} meses completos.`;
-     
+    if ( fechaActual.getDate() < fechaInicio.getDate() ) {
+      this.formPago.get('n_meses')?.setValue(diferenciaMeses -1 );
+      return `Han pasado ${diferenciaMeses - 1} mese completos.`;
     }
- 
-    
+    this.formPago.get('n_meses')?.setValue(diferenciaMeses);
     return `Han pasado ${diferenciaMeses} meses completos.`;
   }
-
-  public cambioFechaPago( eventoFecha : Date){
+  public cambioFechaPago(eventoFecha: Date) {
     console.log(eventoFecha);
+    this.calcular();
   }
-    
- private calcular() {
-    // const fechaInicio = new Date('2024-01-30'); 
-    const fechaInicio = this.formPago.value!.fecha_pago_hasta; 
-    console.log( 'veamos',fechaInicio ); 
-    // Ejemplo de fecha de inicio
-    const fechaActual = new Date();    // Ejemplo de fecha de fin
-    const meses = this.calcularMesesCompletos(fechaInicio!, fechaActual);
+  private calcular() {
+    // FechaInicio 
+    const fechaInicio = this.formPago.value!.fecha_pago_inicio;
+    // Fecha de inicio
+    const fechaActual = this.formPago.value!.fecha_pago_now;
+    // Fecha de fin
+    const meses = this.calcularMesesCompletos(fechaInicio!, fechaActual!);
     console.log(`Número de meses entre las fechas: ${meses}`);
   }
 
-
-  
+  private getFecInicio(): Date {
+    return this.contratoSer.getContratos[0].dicon_fecha_inicio!;
+  }
 }

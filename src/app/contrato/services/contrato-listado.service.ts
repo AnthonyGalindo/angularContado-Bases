@@ -20,11 +20,11 @@ export class ContratosService {
         return this.contrato;
     }   
     
-    MisContratos: Contrato[] = [
+   private MisContratos: Contrato[] = [
     {
         dicon_codigo: '12',
         dicon_numero: 'CONT-1',
-        dicon_fecha_inicio: new Date(1,1,2021),
+        dicon_fecha_inicio: new Date('2023-12-20'),
         dicon_fecha_firma: new Date(),
         dicon_fecha_vencimiento: new Date(4,9,2021),
         dictp_codigo_tipo_contrato: 'Ductos',
@@ -125,9 +125,8 @@ export class ContratosService {
 //     return this.http.get<Contrato[]>('api/contratos');   
 //   }
 
- get  getContratos(): Contrato[] {
+    public get getContratos(): Contrato[] {
     // return this.http.get<Contrato[]>('api/contratos');   
     return [...this.MisContratos]  ;
-
   }
 }

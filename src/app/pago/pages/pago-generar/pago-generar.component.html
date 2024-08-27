@@ -1,8 +1,11 @@
 <p>pago-generar works!</p>
 
-<form [formGroup]="formPago" (ngSubmit)="sendFormularioPago()" class="w-full mat-elevation-z8 ">
-
-  <div class="p-3 d-flex justify-content-center titulo mb-3 ">
+<form
+  [formGroup]="formPago"
+  (ngSubmit)="sendFormularioPago()"
+  class="w-full mat-elevation-z8"
+>
+  <div class="p-3 d-flex justify-content-center titulo mb-3">
     GENERAR PAGOS
     <div>
       <svg
@@ -21,7 +24,6 @@
   </div>
 
   <div class="d-flex justify-content-center mr-6 mt-5">
-
     <mat-form-field class="mr-3">
       <mat-label> Operadora </mat-label>
       <mat-select>
@@ -38,24 +40,24 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-
   </div>
 
   <div class="d-flex justify-content-center">
-
     <div class="mr-3 d-flex flex-column">
       <mat-form-field>
         <mat-label>Comprobante</mat-label>
         <input type="text" matInput placeholder="Comprobante" />
       </mat-form-field>
-
-      <mat-form-field >
+      <mat-form-field>
         <mat-label>Observaciones</mat-label>
         <input type="text" matInput placeholder="Observaciones" />
       </mat-form-field>
+      <mat-form-field>
+        <mat-label>Meses a Pagar</mat-label>
+        <input type="text" matInput placeholder="0" formControlName="n_meses" readonly="true"/>
+      </mat-form-field>
     </div>
-    <div class="d-flex  flex-column ">
-
+    <div class="d-flex flex-column">
       <mat-form-field>
         <mat-label>Tipo pago</mat-label>
         <mat-select>
@@ -66,65 +68,73 @@
       </mat-form-field>
 
       <mat-form-field class="">
-        <mat-label>Fecha Pago Hasta</mat-label>
-        <input matInput [matDatepicker]="picker2" formControlName="fecha_pago_hasta" (dateChange)="cambioFechaPago($event.value)" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle 
+        <mat-label>Fecha Pago Inicio</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker2"
+          formControlName="fecha_pago_inicio"
+          (dateChange)="cambioFechaPago($event.value)"
+        />
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle
           matIconSuffix
           [for]="picker2"
         ></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
-
     </div>
-    <div class="d-flex flex-column ">
+
+    <div class="d-flex flex-column">
       <mat-form-field class="ml-3">
         <mat-label>Referencia</mat-label>
-        <input type="text" matInput placeholder="Referencia" />
+        <input 
+         type="text"
+         matInput 
+         placeholder="Referencia"
+         />
       </mat-form-field>
       <mat-form-field class="ml-3">
-        <mat-label>Meses a Pagar</mat-label>
-        <input type="text" matInput placeholder="0" formControlName="n_meses"  >
-      </mat-form-field>
-      <!-- <mat-form-field class="ml-3">
         <mat-label>Fecha Pago Hasta</mat-label>
-        <input matInput [matDatepicker]="picker1" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <input matInput
+         [matDatepicker]="picker1" 
+         formControlName="fecha_pago_now"
+         (dateChange)="cambioFechaPago($event.value)"
+         />
+        <mat-hint>DD/MM/YYYY</mat-hint>
         <mat-datepicker-toggle
           matIconSuffix
           [for]="picker1"
+
         ></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
-      </mat-form-field> -->
+      </mat-form-field>
     </div>
-
   </div>
 
-  <div class="d-flex justify-content-center mt-4 ">
-  <div class="card w-3 p-1 mr-3 text-light">
-    <h2 class="m-0">SUBTOTAL:</h2>
-    <mat-label class="mt-2  fs-3 pb-2 text-center">
-      {{total | currency : "USD"}}
-    </mat-label>
-  </div>
-
+  <div class="d-flex justify-content-center mt-4">
+    <div class="card w-3 p-1 mr-3 text-light">
+      <h2 class="m-0">SUBTOTAL:</h2>
+      <mat-label class="mt-2 fs-3 pb-2 text-center">
+        {{ total | currency : "USD" }}
+      </mat-label>
+    </div>
     <div class="card w-3 p-1 text-light">
-    <h2 class="m-0">TOTAL:</h2>
-      <mat-label class="mt-2  fs-3 pb-2  text-center">
-        {{total | currency : "USD"}}
+      <h2 class="m-0">TOTAL:</h2>
+      <mat-label class="mt-2 fs-3 pb-2 text-center">
+        {{ total | currency : "USD" }}
       </mat-label>
     </div>
   </div>
 
   <div class="d-flex justify-content-center my-3 mb-1">
     <button
-    type="submit"
-    class="ml-2 mb-4 btn-color mt-3"
-    mat-button
-    mat-flat-button >
-    <mat-icon  >payments</mat-icon>
-    GUARDAR PAGO
-  </button>
+      type="submit"
+      class="ml-2 mb-4 btn-color mt-3"
+      mat-button
+      mat-flat-button
+    >
+      <mat-icon>payments</mat-icon>
+      GUARDAR PAGO
+    </button>
   </div>
-
 </form>
