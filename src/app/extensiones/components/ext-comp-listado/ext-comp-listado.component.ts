@@ -10,15 +10,15 @@ import { Contrato } from 'src/app/contrato/interface/contrato-listado.interfaces
 })
 export class ExtCompListadoComponent implements OnInit {
 constructor(private router:Router) {}
-  ngOnInit(): void {
-    this.dataSource.data = [ 
-      {id:'1',cantidad_v: 0 ,cantidad: 2000,autorizacion:'autoriza1', fecha:new Date('2020-2-23').toLocaleDateString(), v_unitario: 0.66},
-      {id:'1',cantidad_v: 0 ,cantidad: 4897,autorizacion:'autoriza2', fecha:new Date().toLocaleDateString(), v_unitario: 0.66},
-      {id:'1',cantidad_v: 2000 ,cantidad: 3898,autorizacion:'autoriza3', fecha:new Date().toLocaleDateString(), v_unitario: 0.66},
-      {id:'1',cantidad_v: 0 ,cantidad: 12997,autorizacion:'autoriza5', fecha:new Date().toLocaleDateString(), v_unitario:0.66},
-      {id:'1',cantidad_v: 0 ,cantidad: 4891,autorizacion:'autoriza6', fecha:new Date().toLocaleDateString(), v_unitario: 0.66},
-     ];
-  }
+ngOnInit(): void {
+  this.dataSource.data = [ 
+    {id:'1',cantidad_v: 0 ,cantidad: 2000,autorizacion:'autoriza1', fecha:new Date('2020-2-23').toLocaleDateString(), v_unitario: 0.66},
+    {id:'1',cantidad_v: 0 ,cantidad: 4897,autorizacion:'autoriza2', fecha:new Date().toLocaleDateString(), v_unitario: 0.66},
+    {id:'1',cantidad_v: 2000 ,cantidad: 3898,autorizacion:'autoriza3', fecha:new Date().toLocaleDateString(), v_unitario: 0.66},
+    {id:'1',cantidad_v: 0 ,cantidad: 12997,autorizacion:'autoriza5', fecha:new Date().toLocaleDateString(), v_unitario:0.66},
+    {id:'1',cantidad_v: 0 ,cantidad: 4891,autorizacion:'autoriza6', fecha:new Date().toLocaleDateString(), v_unitario: 0.66},
+    ];
+}
 
 dataSource = new MatTableDataSource<any>();
 displayedColumns: string[] = ['id','cantidad', 'cantidad_v', 'cantidadTotal', 'v_unitario','total_mensual', 'total_anual', 'autorizacion','fecha','acciones'];
