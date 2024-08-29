@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TIPO_PAGO } from '../../interfaces/pago.interface';
 import { TipoPagoService } from '../../services/tipo-pago.service';
 import { ContratosService } from 'src/app/contrato/services/contrato-listado.service';
 import { Contrato } from 'src/app/contrato/interface/contrato-listado.interfaces';
 import { FormBuilder } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
+import { listadoOperadora, Operadora } from 'src/app/operadora/interfaces/interfaces-Operadora';
+import { OperadoraService } from 'src/app/operadora/services/operadora.service';
 
 @Component({
   selector: 'app-pago-generar',
@@ -13,20 +15,25 @@ import { MatDatepicker } from '@angular/material/datepicker';
 })
 
 export class PagoGenerarComponent {
-  public tipo_pago: TIPO_PAGO[] = [];
-  public contratos: Contrato[] = [];
+  public operadora:  Operadora[] = [];
+  public tipo_pago:  TIPO_PAGO[]        = [];
+  public contratos:  Contrato[]         = [];
   public total = 0;
+  public subtotal = 0;
 
   constructor(
-    private fb: FormBuilder,
-    private tipoPagoSer: TipoPagoService,
-    private contratoSer: ContratosService
+    private contratoSer    : ContratosService,
+    private fb             : FormBuilder,
+    private injectOperadora: OperadoraService,
+    private tipoPagoSer    : TipoPagoService,
   ) {}
 
   ngOnInit() {
     this.tipo_pago = this.tipoPagoSer.gtipo_pago;
     this.contratos = this.contratoSer.getContratos;
+    this.operadora = this.injectOperadora.g_operadoras_s;
     this.recibirFechaInicio();
+    // this.recibirOperadoras();
   }
 
   formPago = this.fb.group({
@@ -62,10 +69,15 @@ export class PagoGenerarComponent {
   ): string {
     if (fechaInicio === null) {
       this.formPago.value.n_meses = 0;
+      this.total = 0;
+      this.subtotal = 0;
       return '';
     }
     if (fechaActual < fechaInicio) {
       this.formPago.get('n_meses')?.setValue(0);
+      this.total = 0;
+      this.subtotal = 0;
+
       return '0';
     }
     // Calcular la diferencia de años y meses entre las fechas
@@ -76,9 +88,15 @@ export class PagoGenerarComponent {
     // Ajuste si el día del mes actual es menor que el día de inicio
     if (fechaActual.getDate() < fechaInicio.getDate()) {
       this.formPago.get('n_meses')?.setValue(diferenciaMeses - 1);
+      if (true) {
+        this.subtotal = ( this.contratoSer.getContratos[0].dicon_valor_total / 12 ) * (diferenciaMeses - 1);
+        
+      }
+      this.total = 0;
       return `Han pasado ${diferenciaMeses - 1} mese completos.`;
     }
     this.formPago.get('n_meses')?.setValue(diferenciaMeses);
+    this.subtotal = ( (this.contratoSer.getContratos[0].dicon_valor_total) / 12 ) * (diferenciaMeses);
     return `Han pasado ${diferenciaMeses} meses completos.`;
   }
   public cambioFechaPago(eventoFecha: Date) {
@@ -97,6 +115,7 @@ export class PagoGenerarComponent {
   private getFecInicio(): Date {
     return this.contratoSer.getContratos[0].dicon_fecha_inicio!;
   }
+ 
 
   // TODO METODOS QUE PERTENECEN AL LISTADO QUE VA HACER UN COMPONENTE
   

@@ -7,8 +7,7 @@ import {
 
 @Injectable({ providedIn: 'root' })
 export class OperadoraService {
-  constructor() {
-  }
+  constructor() {}
 
   private arrOperadoras: listadoOperadora[] = [
     {
@@ -94,49 +93,50 @@ export class OperadoraService {
   ];
   private operadoras: Operadora[] = [
     {
-        nombre: 'Movistar',
-        ruc: '89123',
-        telefono1: '',
-        telefono2: '',
-        direccion: '',
-        responsable: {
-            nombres: '',
-            apellidos: '',
-            email: '',
-            telefono: ''
-        }
-    },
-    
-    {
-        nombre: 'Cnt',
-        ruc: '90456',
-        telefono1: '',
-        telefono2: '',
-        direccion: '',
-        responsable: {
-            nombres: '',
-            apellidos: '',
-            email: '',
-            telefono: ''
-        }
+      nombre: 'Movistar',
+      ruc: '89123',
+      telefono1: '',
+      telefono2: '',
+      direccion: '',
+      responsable: {
+        nombres: '',
+        apellidos: '',
+        email: '',
+        telefono: '',
+      },
+      idOperadora: 111,
     },
 
     {
-        nombre: 'TvCable',
-        ruc: '91789',
-        telefono1: '',
-        telefono2: '',
-        direccion: '',
-        responsable: {
-            nombres: '',
-            apellidos: '',
-            email: '',
-            telefono: ''
-        }
+      nombre: 'Cnt',
+      ruc: '90456',
+      telefono1: '',
+      telefono2: '',
+      direccion: '',
+      responsable: {
+        nombres: '',
+        apellidos: '',
+        email: '',
+        telefono: '',
+      },
+      idOperadora: 222,
     },
 
+    {
+      nombre: 'TvCable',
+      ruc: '91789',
+      telefono1: '',
+      telefono2: '',
+      direccion: '',
+      responsable: {
+        nombres: '',
+        apellidos: '',
+        email: '',
+        telefono: '',
+      },
+      idOperadora: 333,
+    },
   ];
-
   private varOperadoraEdicion: OperadoraFormulario = {
     nombres: '',
     apellidos: '',
@@ -149,20 +149,18 @@ export class OperadoraService {
     direccionOpe: '',
     observacionOpe: '',
   };
-
   public get dataOperadoraEdicion(): OperadoraFormulario {
     return { ...this.varOperadoraEdicion };
   }
-
-  
-  public get g_listado_operadora_s() : listadoOperadora[] {
-    return [...this.arrOperadoras ];  }
-  
-    
-    public set s_listado_operadora_s(  operadora: listadoOperadora) {
-        this.arrOperadoras.push( operadora );
-    }
-    
+  public get g_listado_operadora_s(): listadoOperadora[] {
+    return [...this.arrOperadoras];
+  }
+  public get g_operadoras_s(): Operadora[] {
+    return [...this.operadoras];
+  }
+  public set s_listado_operadora_s(operadora: listadoOperadora) {
+    this.arrOperadoras.push(operadora);
+  }
 
   sendOperadoraRegistro() {
     // TODO: ENVIO DE LA DATA DEL FORMULARIO REGISTRO OPERADORA

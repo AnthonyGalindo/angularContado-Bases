@@ -36,8 +36,8 @@
     <mat-form-field class="mr-3">
       <mat-label> Operadora </mat-label>
       <mat-select>
-        <mat-option *ngFor="let cont of contratos" [value]="cont.dicon_codigo">
-          {{ cont.dicon_numero }}
+        <mat-option *ngFor="let ope of operadora" [value]="ope.idOperadora">
+          {{ ope.nombre }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -130,7 +130,7 @@
     <div class="card w-3 p-1 text-light">
       <h2 class="m-0">TOTAL:</h2>
       <mat-label class="mt-2 fs-3 pb-2 text-center">
-        {{ total | currency : "USD" }}
+        {{ subtotal | currency : "USD" }}
       </mat-label>
     </div>
   </div>
@@ -151,5 +151,5 @@
 <!-- TODO MOSTRAR TABLA DE PLANILLA -->
 
 <table>
-  
+
 </table>

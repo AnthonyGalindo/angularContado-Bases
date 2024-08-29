@@ -38,12 +38,13 @@ constructor(){ }
       console.log({representate : responsable} );
 
       const operadora: Operadora  = {
-         nombre: this.dataFormularioOpe.nombreOpe ,
-         ruc: this.dataFormularioOpe.rucOpe ,
-         telefono1: this.dataFormularioOpe.telefono1Ope ,
-         telefono2: this.dataFormularioOpe.telefono2Ope ,
-         direccion: this.dataFormularioOpe.direccionOpe ,
-         observacion: this.dataFormularioOpe.observacionOpe 
+        nombre: this.dataFormularioOpe.nombreOpe,
+        ruc: this.dataFormularioOpe.rucOpe,
+        telefono1: this.dataFormularioOpe.telefono1Ope,
+        telefono2: this.dataFormularioOpe.telefono2Ope,
+        direccion: this.dataFormularioOpe.direccionOpe,
+        observacion: this.dataFormularioOpe.observacionOpe,
+        // idOperadora: 0
       }
 
       console.log( {operador: operadora} );

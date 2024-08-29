@@ -5,6 +5,8 @@ import { MaterialModule } from './material/material.module';
 
 
 const routes: Routes = [
+
+  
    
   {
     path: 'operadora',     
@@ -32,8 +34,14 @@ const routes: Routes = [
   },
 
   {
+    path: 'auth',
+    loadComponent: () => import ('./inicio/inicio.module').then(m => m.InicioModule),
+    
+  },
+
+  {
     path: '**',
-    redirectTo: 'operadora/admin'
+    redirectTo: '/auth/login'
   }
 
 ];
