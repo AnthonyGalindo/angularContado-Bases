@@ -1,0 +1,84 @@
+<!-- TODO:LISTADO  Y TABLA PARA MOSTRAR LAS OPERADORAS-->
+
+<button  type="button boton-registro" routerLink="/shared/operadora/registro" class="btn btn-primary  w-2  ms-1 mb-4 mt-2 flex justify-content-center align-items-center ">
+  <mat-icon > add_circle</mat-icon>
+   Nuevo
+</button>
+
+<div class="mat-elevation-z8 content-listado">
+
+ <div class="row">
+
+    <mat-form-field class="col-3">
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="aplicarFiltro($event)" placeholder="Busqueda" #input>
+    </mat-form-field>
+
+    <mat-paginator class="col-9"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Seleccione una pagina"
+  >
+  </mat-paginator>
+ </div>
+
+  <table mat-table  [dataSource]="dataSource"  matSort (matSortChange)="announceSortChange($event)" >
+
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header >No.</th>
+      <td mat-cell sortActionDescription="Sort by number" *matCellDef="let element">{{ element.position }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell  mat-sort-header *matHeaderCellDef>Operadora</th>
+      <td mat-cell sortActionDescription="Sort by name" *matCellDef="let element">{{ element.nombre }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="ruc">
+      <th mat-header-cell *matHeaderCellDef>Ruc</th>
+      <td mat-cell *matCellDef="let element">{{ element.ruc }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="telefono1">
+      <th mat-header-cell  *matHeaderCellDef>Telefono1</th>
+      <td mat-cell *matCellDef="let element">{{ element.telefono1 }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="telefono2">
+      <th mat-header-cell  *matHeaderCellDef>Telefono2</th>
+      <td mat-cell  *matCellDef="let element">{{ element.telefono2 }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="representante">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef>Representante</th>
+      <td mat-cell sortActionDescription="Sort by name" *matCellDef="let element">{{ element.representante }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="icons">
+      <th mat-header-cell  *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let element" >
+        <button mat-icon-button (click)="editarOperadora(element) ">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnss"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnss"></tr>
+
+  </table>
+
+
+
+
+
+
+
+
+
+
+
+

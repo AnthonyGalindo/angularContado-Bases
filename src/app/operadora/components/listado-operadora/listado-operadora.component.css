@@ -1,0 +1,30 @@
+table {
+  width: 100%;
+ 
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.content-listado{
+  width: 100%;
+  background-color: #ffffff;
+  padding: 1rem;
+}
+
+th{
+  background-color: #235FBF !important;
+  color: white;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-weight:300;
+}
+
+/* button.boton-registro{
+
+} */
+
+  /* .heder-color{
+
+    background-color: black;
+  } */

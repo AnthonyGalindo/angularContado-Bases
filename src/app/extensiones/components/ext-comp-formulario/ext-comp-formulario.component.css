@@ -1,0 +1,10 @@
+.bg-blue {
+    background-color: #235FBF !important;
+    font-size: 1.3rem;
+    font-weight: 500;
+    }
+
+    .btn-color {
+        background-color: #235FBF;
+        /* background-color: red; */
+    }

@@ -1,0 +1,56 @@
+h3{
+    background-color: #2ecc706c;
+    padding: 0.3rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+.content-representante,
+.content-operadora {
+    background: linear-gradient(to right, #2464cc, #1f56af);
+    
+}
+
+.content-operadora {
+    background: linear-gradient(to right, #2464cc, #5483cd);
+
+}
+
+.btn-naranja {
+    background-color: #34495E !important;
+    transition: background-color 500ms ease-in-out;
+}
+
+.btn-naranja:hover {
+    background-color: #F39C12 !important;
+}
+/* 
+Paleta de Colores
+Color Primario: Azul
+
+HEX: #235FBF
+RGB: rgb(35, 95, 191)
+Color Secundario: Verde Menta
+
+HEX: #2ECC71
+RGB: rgb(46, 204, 113)
+Color de Acento: Naranja Claro
+
+HEX: #F39C12
+RGB: rgb(243, 156, 18)
+Color Neutro: Gris Claro
+
+HEX: #ECF0F1
+RGB: rgb(236, 240, 241)
+Color de Fondo: Blanco
+
+HEX: #FFFFFF
+RGB: rgb(255, 255, 255)
+Color de Texto: Gris Oscuro
+
+HEX: #34495E
+RGB: rgb(52, 73, 94)
+
+*/

@@ -1,0 +1,153 @@
+<nav class="col col-lg-12 text-left">
+  <div class="card-body">
+    <h2 class="text-success">PAGOS</h2>
+  </div>
+  <ol _ngcontent-egs-c125="" class="breadcrumb">
+    <li aria-current="page" class="breadcrumb-item">
+      <a>GENERAR</a>
+    </li>
+  </ol>
+</nav>
+
+<form
+  [formGroup]="formPago"
+  (ngSubmit)="sendFormularioPago()"
+  class="w-full mat-elevation-z8"
+>
+  <div class="p-3 d-flex justify-content-center titulo mb-3">
+    GENERAR PAGOS
+    <div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="1.5rem"
+        viewBox="0 -870 960 960"
+        width="1.5rem"
+        fill="#fff"
+        class="m-0 p-0 ml-3"
+      >
+        <path
+          d="M240-160q-66 0-113-47T80-320v-320q0-66 47-113t113-47h480q66 0 113 47t47 113v320q0 66-47 113t-113 47H240Zm0-480h480q22 0 42 5t38 16v-21q0-33-23.5-56.5T720-720H240q-33 0-56.5 23.5T160-640v21q18-11 38-16t42-5Zm-74 130 445 108q9 2 18 0t17-8l139-116q-11-15-28-24.5t-37-9.5H240q-26 0-45.5 13.5T166-510Z"
+        />
+      </svg>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center mr-6 mt-5">
+    <mat-form-field class="mr-3">
+      <mat-label> Operadora </mat-label>
+      <mat-select>
+        <mat-option *ngFor="let ope of operadora" [value]="ope.idOperadora">
+          {{ ope.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label> NºContrato </mat-label>
+      <mat-select>
+        <mat-option *ngFor="let cont of contratos" [value]="cont.dicon_codigo">
+          {{ cont.dicon_numero }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <div class="mr-3 d-flex flex-column">
+      <mat-form-field>
+        <mat-label>Comprobante</mat-label>
+        <input type="text" matInput placeholder="Comprobante" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Observaciones</mat-label>
+        <input type="text" matInput placeholder="Observaciones" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Meses a Pagar</mat-label>
+        <input type="text" matInput placeholder="0" formControlName="n_meses" readonly="true"/>
+      </mat-form-field>
+    </div>
+    <div class="d-flex flex-column">
+      <mat-form-field>
+        <mat-label>Tipo pago</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let tipo of tipo_pago" [value]="tipo.TIPPAG_ID">
+            {{ tipo.TIPPAG_NOMBRE }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="">
+        <mat-label>Fecha Pago Inicio</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker2"
+          formControlName="fecha_pago_inicio"
+          (dateChange)="cambioFechaPago($event.value)"
+        />
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker2"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="d-flex flex-column">
+      <mat-form-field class="ml-3">
+        <mat-label>Referencia</mat-label>
+        <input
+         type="text"
+         matInput
+         placeholder="Referencia"
+         />
+      </mat-form-field>
+      <mat-form-field class="ml-3">
+        <mat-label>Fecha Pago Hasta</mat-label>
+        <input matInput
+         [matDatepicker]="picker1"
+         formControlName="fecha_pago_now"
+         (dateChange)="cambioFechaPago($event.value)"
+         />
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker1"
+
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center mt-4">
+    <div class="card w-3 p-1 mr-3 text-light">
+      <h2 class="m-0">SUBTOTAL:</h2>
+      <mat-label class="mt-2 fs-3 pb-2 text-center">
+        {{ total | currency : "USD" }}
+      </mat-label>
+    </div>
+    <div class="card w-3 p-1 text-light">
+      <h2 class="m-0">TOTAL:</h2>
+      <mat-label class="mt-2 fs-3 pb-2 text-center">
+        {{ subtotal | currency : "USD" }}
+      </mat-label>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center my-3 mb-1">
+    <button
+      type="submit"
+      class="ml-2 mb-4 btn-color mt-3"
+      mat-button
+      mat-flat-button
+    >
+      <mat-icon>payments</mat-icon>
+      GUARDAR PAGO
+    </button>
+  </div>
+</form>
+
+<!-- TODO MOSTRAR TABLA DE PLANILLA -->
+
+<pago-comp-pago-pendiente></pago-comp-pago-pendiente>

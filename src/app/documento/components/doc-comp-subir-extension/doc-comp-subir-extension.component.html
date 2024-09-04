@@ -1,0 +1,78 @@
+<form class="mat-elevation-z8 text-center">
+
+    <div class="p-3 d-flex justify-content-center titulo">
+        SUBIR EXTENSION CONTRATO
+        <svg class=" ml-3" xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -760 960 960" width="2rem" fill="#fff"><path d="M440-200h80v-167l64 64 56-57-160-160-160 160 57 56 63-63v167ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z"/></svg>
+    </div>
+  <div>
+    <mat-form-field class="mt-4 ml-3 w-3">
+      <mat-label>Operadora</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let tipo of tipoContratos" [value]="tipo.tipo_id">
+          {{ tipo.tipo_nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="mt-2 ml-3 w-3">
+      <mat-label>Contrato</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let tipo of tipoContratos" [value]="tipo.tipo_id">
+          {{ tipo.tipo_nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="mt-2 ml-3 w-3">
+      <mat-label>Extension Contrato</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let tipo of tipoContratos" [value]="tipo.tipo_id">
+          {{ tipo.tipo_nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="mt-2 ml-3 w-4">
+      <mat-label>Tipo de contrato</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let tipo of tipoContratos" [value]="tipo.tipo_id">
+          {{ tipo.tipo_nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="mt-2 ml-3 w-4" >
+      <mat-label>Extension Contrato</mat-label>
+      <button mat-icon-button matPrefix (click)="f_input.click()">
+        <mat-icon>attach_file</mat-icon>
+      </button>
+      <input type="text" readonly matInput [formControl]="display" />
+      <input
+        type="file"
+        multiple
+        hidden
+        #f_input
+        (change)="handleFileInputChange(f_input.files!)"
+      />
+      <mat-error>this field is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="mt-2 ml-3 w-4">
+      <mat-label>Nombre</mat-label>
+      <input type="text" matInput placeholder="Nombre" />
+    </mat-form-field>
+
+    <mat-form-field class="mt-2 ml-3 w-4">
+      <mat-label>Descripción</mat-label>
+      <input type="text" matInput placeholder="Nombre" />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button mat-button mat-flat-button  type="submit" class="boton mb-4">Guardar</button>
+  </div>
+</form>
+

@@ -1,0 +1,71 @@
+ul li {
+    background-color: #235FBF;
+    color: #fff;
+}
+
+li {
+    border-radius: 100px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.cambioColor{
+    background-color: #2ECC71 !important;
+    color: black !important;
+}
+
+li {
+    border-radius: 100px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.content-representant{
+
+    background: linear-gradient(to right, #10bb9e, #1f56af) !important;
+}
+
+.edit-operadora, .edit-representante{
+  cursor: pointer;
+}
+.edit-operadora:hover, .edit-representante:hover{
+    background-color: rgb(164, 204, 31) !important ;
+    transition-duration: 400ms;
+}
+
+
+
+/* TODO  PEGO ESTO AUI */
+
+h3{
+    background-color: #2be779bc;
+    padding: 0.3rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+.content-representante,
+.content-operadora {
+    background: linear-gradient(to right, #2464cc, #1f56af);
+    
+}
+
+.content-operadora {
+    background: linear-gradient(to right, #2464cc, #5483cd);
+
+}
+
+.btn-naranja {
+    background-color: #235FBF !important;
+    transition: background-color 500ms ease-in-out;
+}
+
+.btn-naranja:hover {
+    background-color: #F39C12 !important;
+    color: black;
+}
+

@@ -1,0 +1,96 @@
+<nav class="col col-lg-12 text-left">
+  <div class="card-body">
+      <h2 class="text-success">DOCUMENTOS</h2>
+  </div>
+  <ol _ngcontent-egs-c125="" class="breadcrumb">
+    <li aria-current="page" class="breadcrumb-item">
+      <a routerLink="/shared/documento/ver"
+        >INICIO</a
+      >
+    </li>
+    <li aria-current="page" class="breadcrumb-item">
+      <a
+        >EDITAR DOCUMENTO EXTENSION</a
+      >
+    </li>
+
+  </ol>
+</nav>
+
+<form class="mat-elevation-z8 text-center">
+
+    <div class="p-3 d-flex justify-content-center titulo">
+        EDITAR EXTENSION CONTRATO
+    </div>
+  <div>
+    <mat-form-field class="mt-4 ml-3 w-3">
+      <mat-label>Operadora</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let tipo of tipoContratos" [value]="tipo.tipo_id">
+          {{ tipo.tipo_nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="mt-2 ml-3 w-3">
+      <mat-label>Contrato</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let tipo of tipoContratos" [value]="tipo.tipo_id">
+          {{ tipo.tipo_nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="mt-2 ml-3 w-3">
+      <mat-label>Extension Contrato</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let tipo of tipoContratos" [value]="tipo.tipo_id">
+          {{ tipo.tipo_nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="mt-2 ml-3 w-4">
+      <mat-label>Tipo de contrato</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let tipo of tipoContratos" [value]="tipo.tipo_id">
+          {{ tipo.tipo_nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="mt-2 ml-3 w-4" >
+      <mat-label>Extension Contrato</mat-label>
+      <button mat-icon-button matPrefix (click)="f_input.click()">
+        <mat-icon>attach_file</mat-icon>
+      </button>
+      <input type="text" readonly matInput [formControl]="display" />
+      <input
+        type="file"
+        multiple
+        hidden
+        #f_input
+        (change)="handleFileInputChange(f_input.files!)"
+      />
+      <mat-error>this field is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="mt-2 ml-3 w-4">
+      <mat-label>Nombre</mat-label>
+      <input type="text" matInput placeholder="Nombre" />
+    </mat-form-field>
+
+    <mat-form-field class="mt-2 ml-3 w-4">
+      <mat-label>Descripción</mat-label>
+      <input type="text" matInput placeholder="Nombre" />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button mat-button mat-flat-button  type="submit" class="boton mb-4">Guardar Cambios</button>
+  </div>
+</form>
+

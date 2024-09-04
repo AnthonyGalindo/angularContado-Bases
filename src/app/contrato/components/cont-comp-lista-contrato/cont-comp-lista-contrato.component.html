@@ -1,0 +1,99 @@
+
+<div class="table-responsive content-listado">
+
+    <div class="row">
+  
+        <mat-form-field class="col-3">
+          <mat-label>Filtro</mat-label>
+          <input matInput (keyup)="aplicarFiltro($event)" placeholder="Busqueda" #input>
+        </mat-form-field>
+    
+        <mat-paginator class="col-9"
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+        aria-label="Seleccione una pagina">
+      </mat-paginator> 
+     </div>
+
+    <table mat-table  [dataSource]="dataSource"  matSort (matSortChange)="announceSortChange($event)"  class="mat-elevation-z8"    >
+
+        <ng-container matColumnDef="dicon_vigencia">
+            <th mat-header-cell *matHeaderCellDef> vigencia </th>
+            <td mat-cell *matCellDef="let element"> {{element._fecha_inicio}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="dicon_numero">
+            <th mat-header-cell *matHeaderCellDef> Nº Contrato </th>
+            <td mat-cell *matCellDef="let element"> {{element.dicon_numero}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="dicon_fecha_firma">
+            <th mat-header-cell *matHeaderCellDef  mat-sort-header> Fecha Firma </th>
+            <td mat-cell sortActionDescription="Sort by name" *matCellDef="let element"> {{element.dicon_fecha_firma | date :'dd/MM/yyyy' }} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="dictp_codigo_tipo_contrato">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Tipo Contrato </th>
+            <td mat-cell sortActionDescription="Sort by name" *matCellDef="let element"> {{element.dictp_codigo_tipo_contrato}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="dicon_cantidad">
+            <th mat-header-cell *matHeaderCellDef  mat-sort-header> Cantidad </th>
+            <td mat-cell *matCellDef="let element"  sortActionDescription="Sort by number" > {{element.dicon_cantidad}}   </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dicon_operadoraa">
+            <th mat-header-cell *matHeaderCellDef  mat-sort-header> Operadora  </th>
+            <td mat-cell *matCellDef="let element" sortActionDescription="Sort by name" > {{ element.dictp_codigo_tipo_contrato}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="dicon_valor_total">
+            <th mat-header-cell *matHeaderCellDef> Total Anual </th>
+            <td mat-cell *matCellDef="let element"> {{ element.dicon_valor_total | currency: 'USD' }} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="dicon_valor_total_Mes">
+            <th mat-header-cell *matHeaderCellDef> Total Mes  </th>
+            <td mat-cell *matCellDef="let element"> {{ (element.dicon_valor_total / 12) | currency: 'USD'  }} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="acciones">
+
+            <th mat-header-cell *matHeaderCellDef> Acciones  </th>
+            <td mat-cell *matCellDef="let element" > 
+                <button  mat-icon-button  > <mat-icon>preview</mat-icon> </button>
+                <button  mat-icon-button  (click)="editarContrato(element)" > <mat-icon>edit</mat-icon> </button>
+                <button  mat-icon-button  > <mat-icon>delete</mat-icon> </button>
+            </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="dicon_observaciones">
+            <th mat-header-cell *matHeaderCellDef> Observaciones </th>
+            <td mat-cell *matCellDef="let element" >
+                <span matTooltip="{{ element.dicon_observaciones }}" matTooltipPosition="above">
+                    {{ element.dicon_observaciones | slice:0:15 }}...
+                </span>
+            </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef> Verificado </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox color="primary" disabled="false"
+                            
+                            (change)="$event ? seleccionada.toggle(row) : null"
+                            [checked]="seleccionada.isSelected(row)">
+                            
+              </mat-checkbox>
+            </td>
+        </ng-container>
+    
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr> 
+         
+    </table> 
+</div>
+
+
+
+
