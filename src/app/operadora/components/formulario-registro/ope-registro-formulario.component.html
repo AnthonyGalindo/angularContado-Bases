@@ -3,46 +3,20 @@
   <div
     class="bg-gradient agrupador-representante p-2 w-full flex flex-row mb-4"
   >
-    
-    <div class="w-4 p-2 mr-2 content-representante">
-      <h3 class="text-white text-center pt-2 w-full">Registro Representante</h3>
-      <mat-form-field class="w-full p-2">
-        <mat-label>Nombres</mat-label>
-        <input  matInput placeholder="Nombres del representante"
-        formControlName = "nombres" />
-      </mat-form-field>
-      
-      <mat-form-field class="w-full p-2">
-        <mat-label>Apellidos</mat-label>
-        <input  matInput placeholder="Apellidos del representante" 
-        formControlName = "apellidos" />
-      </mat-form-field>
 
-      <mat-form-field class="w-full p-2">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Email" 
-        formControlName = "email" />
-      </mat-form-field>
 
-      <mat-form-field class="w-full p-2">
-        <mat-label>Telefono</mat-label>
-        <input  matInput placeholder="telefono" 
-        formControlName = "telefono" />
-      </mat-form-field>
-    </div>
-
-    <div class="w-8 p-2 text-center content-operadora mat-elevation-z8">
+    <div class="w-8 p-2 mr-2 text-center content-operadora mat-elevation-z8">
       <h3 class="text-center text-white pt-2">Registro Operadora</h3>
 
       <mat-form-field class="w-5 m-2">
         <mat-label>Nombre de la Operadora</mat-label>
-        <input  matInput placeholder="Nombre de la operadora"  
+        <input  matInput placeholder="Nombre de la operadora"
         formControlName = "nombreOpe" />
       </mat-form-field>
 
       <mat-form-field class="w-5 m-2">
         <mat-label>Ruc de la Operadora</mat-label>
-        <input type="text" matInput placeholder="Ruc de la operadora" 
+        <input type="text" matInput placeholder="Ruc de la operadora"
         formControlName = "rucOpe"  />
       </mat-form-field>
 
@@ -58,10 +32,16 @@
         formControlName = "telefono2Ope"  />
       </mat-form-field>
 
-      <mat-form-field class="w-8 m-2">
+      <mat-form-field class="w-5 m-2">
+        <mat-label>Campo Pendinte</mat-label>
+        <input type="text" matInput placeholder="Dirección"
+        formControlName = "direccionOpe" />
+      </mat-form-field>
+
+      <mat-form-field class="w-5 m-2">
         <mat-label>Dirección</mat-label>
-        <input type="text" matInput placeholder="Dirección" 
-         formControlName = "direccionOpe" />
+        <input type="text" matInput placeholder="Dirección"
+        formControlName = "direccionOpe" />
       </mat-form-field>
 
       <mat-form-field class="w-8 m-2">
@@ -73,14 +53,42 @@
         </textarea>
       </mat-form-field>
     </div>
-  
+
+
+    <div class="w-4 p-2  content-representante">
+      <h3 class="text-white text-center pt-2 w-full">Registro Representante</h3>
+      <mat-form-field class="w-full p-2">
+        <mat-label>Nombres</mat-label>
+        <input  matInput placeholder="Nombres del representante"
+        formControlName = "nombres" />
+      </mat-form-field>
+
+      <mat-form-field class="w-full p-2">
+        <mat-label>Apellidos</mat-label>
+        <input  matInput placeholder="Apellidos del representante"
+        formControlName = "apellidos" />
+      </mat-form-field>
+
+      <mat-form-field class="w-full p-2">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email"
+        formControlName = "email" />
+      </mat-form-field>
+
+      <mat-form-field class="w-full p-2">
+        <mat-label>Telefono</mat-label>
+        <input  matInput placeholder="telefono"
+        formControlName = "telefono" />
+      </mat-form-field>
+    </div>
+
   </div>
 
   <button  type="submit" class="ml-2 btn-naranja" mat-button mat-flat-button color="primary">
     <mat-icon>save</mat-icon>
     Guardar Cambios
   </button>
-</form> 
+</form>
 
 
 

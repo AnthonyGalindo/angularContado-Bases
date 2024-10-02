@@ -18,8 +18,8 @@
       </svg>
     </h2>
 
-    <div class="d-flex justify-content-end">
-      <mat-form-field class="mt-2 ml-3 w-2 mr-4">
+    <div class="d-flex justify-content-start">
+      <mat-form-field class="mt-2 ml-3 w-3 mr-4">
         <mat-label>Operadora</mat-label>
         <mat-select
           (valueChange)="SelecionaOperadora($event)"
@@ -35,7 +35,7 @@
       </mat-form-field>
     </div>
 
-    <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-start">
       <mat-form-field class="mt-2 ml-3 w-3">
         <mat-label> Numero </mat-label>
         <input type="text" matInput placeholder="Numero" />
@@ -58,28 +58,28 @@
       </mat-form-field>
     </div>
 
-    <div class="d-flex justify-content-end">
-      <mat-form-field class="mt-2 ml-2 w-2 ml-4">
+    <div class="d-flex justify-content-start align-items-end mr-4">
+      <mat-form-field class="mt-2 w-3 ml-3">
         <mat-label>Provincia</mat-label>
-        <mat-select (valueChange)="cargaCantones($event)">
+        <mat-select  multiple  (selectionChange) ="cargaCantones($event)">
           <mat-option *ngFor="let prov of provincias" [value]="prov.value">
             {{ prov.viewValue }}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field class="mt-2 ml-3 w-2">
+      <mat-form-field class="mt-2 ml-3 w-3">
         <mat-label>Canton</mat-label>
-        <mat-select (valueChange)="cargarParroquias($event)">
+        <mat-select multiple (valueChange)="cargarParroquias($event)">
           <mat-option *ngFor="let canton of cantones" [value]="canton.value">
             {{ canton.viewValue }}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field class="mt-2 ml-3 w-2">
+      <mat-form-field class="mt-2 ml-3 w-3">
         <mat-label>Parroquia</mat-label>
-        <mat-select>
+        <mat-select multiple >
           <mat-option
             *ngFor="let parroquia of parroquias"
             [value]="parroquia.value"
@@ -89,18 +89,24 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field class="w-2 ml-3 mt-2">
-        <mat-label>Sector</mat-label>
-        <input type="text" matInput placeholder="Sector" />
-      </mat-form-field>
+      <!-- TODO  Agregar boton de agregar y eleminar seleccion-->
+      <button class="ml-3 btn-naranja mb-4 "
+      mat-button
+      mat-flat-button
+      type="button"
+      (click)="agregar()"
+      >Agregar</button>
 
-      <mat-form-field class="w-3 ml-3 mt-2 mr-4">
-        <mat-label>Direccion</mat-label>
-        <input type="text" matInput placeholder="Direccion" />
-      </mat-form-field>
+      <button class="ml-3 btn-naranja mb-4 "
+      mat-button
+      mat-flat-button
+        type="button"
+        (click)="agregar()"
+        >Eliminar</button>
+
     </div>
 
-    <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-start">
       <mat-form-field class="mt-2 ml-3 w-3">
         <mat-label>Fecha de Inicio</mat-label>
         <input
@@ -117,7 +123,7 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field class="mt-2 ml-3 w-3 mr-4">
+      <mat-form-field class="mt-2 ml-3 w-3 mr-3">
         <mat-label>Fecha de Firma</mat-label>
         <input matInput [matDatepicker]="picker3" />
         <mat-hint>MM/DD/YYYY</mat-hint>
@@ -128,21 +134,28 @@
         <mat-datepicker #picker3></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field class="mt-2 ml-3 w-3 mr-4">
-        <mat-label>Numero de Meses</mat-label>
-        <input
-          type="number"
-          matInput
-          placeholder="numero de días"
-          formControlName="mesesContrato"
-          #mesesContrato
-          (input)="calcularFecha(mesesContrato.valueAsNumber)"
-        />
-      </mat-form-field>
+
+    <mat-form-field class="mt-2  w-4" >
+      <mat-label>Documento Contrato</mat-label>
+      <button mat-icon-button matPrefix (click)="f_input.click()">
+        <mat-icon>attach_file</mat-icon>
+      </button>
+      <input type="text" readonly matInput [formControl]="display" />
+      <input
+        type="file"
+        multiple
+        hidden
+        #f_input
+        (change)="handleFileInputChange(f_input.files!)"
+      />
+      <mat-error>this field is required</mat-error>
+    </mat-form-field>
+
+
     </div>
 
-    <div class="mt-3 flex justify-content-end">
-      <mat-form-field class="w-2 m-2">
+    <div class="mt-3 flex justify-content-start">
+      <mat-form-field class="w-2 m-2 ml-3">
         <mat-label>Cantidad</mat-label>
         <input
           type="number"
@@ -153,10 +166,68 @@
         />
       </mat-form-field>
 
+      <mat-form-field class="mt-2 ml-3 w-3  m-2">
+        <mat-label>Numero de Meses</mat-label>
+        <input
+          type="number"
+          matInput
+          placeholder="numero de días"
+          formControlName="mesesContrato"
+          #mesesContrato
+          (input)="calcularFecha(mesesContrato.valueAsNumber)"
+        />
+      </mat-form-field>
+
       <mat-form-field class="w-3 m-2 mr-4">
         <mat-label>Observación</mat-label>
         <input type="text" matInput placeholder="Observación" />
       </mat-form-field>
+    </div>
+
+    <!-- TODO AUMENTANDO LOS CAMBIOS DE POLIZA -->
+
+    <hr>
+
+    <h3 class="d-flex justify-content-center text-lg font-medium  bg-cyan  "> PÓLIZA </h3>
+    <div  class="mt-3 flex justify-content-start mb-5">
+      <mat-form-field class=" ml-3 w-3 mr-3">
+        <mat-label>Inicio Poliza</mat-label>
+        <input matInput [matDatepicker]="picker4" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker4"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker4></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class=" ml-3 w-3 mr-3">
+        <mat-label>Fin Poliza</mat-label>
+        <input matInput [matDatepicker]="picker5" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker5"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker5></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="mt-2  w-4" >
+        <mat-label>Subir Poliza</mat-label>
+        <button mat-icon-button matPrefix (click)="f_input.click()">
+          <mat-icon>attach_file</mat-icon>
+        </button>
+        <input type="text" readonly matInput [formControl]="display" />
+        <input
+          type="file"
+          multiple
+          hidden
+          #f_input
+          (change)="handleFileInputChange(f_input.files!)"
+        />
+        <mat-error>this field is required</mat-error>
+      </mat-form-field>
+
     </div>
 
     <div class="flex justify-content-end">
@@ -166,27 +237,25 @@
       </mat-checkbox>
       </span> -->
 
-      <mat-form-field class="w-3 m-2">
-        <mat-label>Cantidad Verificada</mat-label>
-        <input type="number" matInput placeholder="Cantidad Verificada" />
-      </mat-form-field>
 
       <!-- <mat-form-field class="w-3 m-2 mr-4 "> -->
-      <mat-label class="w-3 mt-4 mr-4 fs-2 text-center">{{
+<!-- TODO COMENTE EL LABEL QUE MUESTRA EL TOTAL -->
+      <!-- <mat-label class="w-3 m-4 fs-2 text-center">{{
         total | currency : "USD"
-      }}</mat-label>
+      }}</mat-label> -->
+
       <!-- <input type="number" matInput placeholder="Valor Total" formControlName = "valorTotal" readonly="true"  />
       </mat-form-field> -->
     </div>
 
-    <div class="d-flex justify-content-end mr-4">
+    <div class="d-flex justify-content-start mr-4">
       <!-- <button  type="submit" class="ml-2 btn-naranja mb-4 btn-color"  mat-button mat-flat-button  [disabled]="formContrato.invalid" color="primary" (click)="probarSweetAlert()">
           <mat-icon>gavel</mat-icon>
           Guardar Contrato
         </button> -->
       <button
         type="submit"
-        class="ml-2 btn-naranja mb-4 btn-color"
+        class="ml-2  mb-4 btn-color"
         mat-button
         mat-flat-button
         color="primary"
@@ -197,7 +266,7 @@
 
       <!-- <button  type="button" class="ml-4 btn-naranja mb-4 btn-color"   mat-button mat-flat-button color="primary">
           <mat-icon>verified</mat-icon>
-          Generar tabla 
+          Generar tabla
         </button> -->
     </div>
   </div>
@@ -229,14 +298,14 @@
     </ng-container>
 
     <ng-container matColumnDef="subTotal">
-      <th mat-header-cell *matHeaderCellDef>SUBTOTAL</th>
+      <th mat-header-cell *matHeaderCellDef>SUBTOTAL ANUAL</th>
       <td mat-cell *matCellDef="let element" class="fs-5">
         {{ element.subTotal | currency : "USD" }}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="valor">
-      <th mat-header-cell *matHeaderCellDef>VALOR TOTAL</th>
+      <th mat-header-cell *matHeaderCellDef>TOTAL ANUAL</th>
       <td mat-cell *matCellDef="let element" class="fs-4">
         {{ element.valor | currency : "USD" }}
       </td>

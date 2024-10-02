@@ -1,6 +1,6 @@
-import { Component, inject, Inject, Input, OnChanges, signal  } from '@angular/core';
+import { Component, inject, Inject, Input, OnChanges, signal, VERSION  } from '@angular/core';
 import { Canton, Parroquia, Provincia, PruebaLista, TablaContrato, Tipo_Contrato,} from '../../interface/contrato-interfaces';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { ServiceContrato } from '../../services/contrato.service';
@@ -17,7 +17,7 @@ import { Operadora } from 'src/app/operadora/interfaces/interfaces-Operadora';
 })
 export class ContCompGenerarComponent {
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private datePipe: DatePipe,
     private sc: ServiceContrato,
     private rout:Router,
@@ -30,7 +30,7 @@ export class ContCompGenerarComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      
+
     });
   }
 
@@ -38,10 +38,10 @@ export class ContCompGenerarComponent {
   public total = 0;
   public subtotal = 0;
 
-   tablaCalculadaMess: PruebaLista [] = [{
-     valor: 0,
-     valorTotal: 0
-   }] ;
+tablaCalculadaMess: PruebaLista [] = [{
+valor: 0,
+valorTotal: 0
+}] ;
 
   public selectedProvincia!: number;
   public cantones: Canton[] = [];
@@ -96,6 +96,7 @@ export class ContCompGenerarComponent {
       'dd/MM/yyy'
     );
   }
+
   // TODO: CALCULAR LA FECHA FINAL EN BASE A LOS DIAS
   calcularFecha(meses: number) {
     let fechaVigente = this.formContrato.get('fechaVigente')?.value;
@@ -294,16 +295,22 @@ export class ContCompGenerarComponent {
       value: 56,
     },
   ];
-  public cargaCantones(provinciaId: number): void {
+  public cargaCantones(provinciaId: any): void {
+
+    // me trae el id de los elementos seleccionados un array de los id de los elementos seleccionados
+    const listaProbincias = provinciaId.value;
+
+    this.cantones = [];
+
     this.parroquias = [];
     this.cantones = this.listaCantones.filter(
       (canton) => canton.idProvincia === provinciaId
     );
     console.log(this.cantones);
   }
-  public cargarParroquias(parroquiaId: number) {
+  public cargarParroquias(parroquiaId: any) {
     console.log(parroquiaId);
-
+debugger
     this.parroquias = this.listaParroquias.filter(
       (parroquia) => parroquia.idParroquia === parroquiaId
     );
@@ -359,8 +366,29 @@ export class ContCompGenerarComponent {
   }
 
   SelecionaOperadora( ev: number) {
-      console.log(ev);            
+      console.log(ev);
     }
-  
+
+  // Todo agregar
+  public agregar() {
+
+  }
+
+  name = 'Angular ' + VERSION.major;
+  display: FormControl = new FormControl('', Validators.required);
+  file_store!: FileList;
+  file_list: Array<string> = [];
+
+  handleFileInputChange(l: FileList): void {
+    this.file_store = l;
+    if (l.length) {
+      const f = l[0];
+      const count = l.length > 1 ? `(+${l.length - 1} files)` : '';
+      this.display.patchValue(`${f.name}${count}`);
+    } else {
+      this.display.patchValue('');
+    }
+  }
+
 
 }

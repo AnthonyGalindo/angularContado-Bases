@@ -9,6 +9,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Router } from '@angular/router';
+import { Operadora } from 'src/app/operadora/interfaces/interfaces-Operadora';
 
 @Component({
   selector: 'cont-comp-lista-contrato',
@@ -30,7 +31,6 @@ export class ContCompListaContratoComponent implements AfterViewInit {
     'dicon_valor_total_Mes',
     'dicon_valor_total',
     'dicon_observaciones',
-    'select',
     'acciones'
    ];
   dataSource = new MatTableDataSource<Contrato>();
@@ -63,8 +63,8 @@ export class ContCompListaContratoComponent implements AfterViewInit {
   getSelectedRowInfo(): void {
     const selectedRows = this.seleccionada.selected;
     if (selectedRows.length > 0) {
-      selectedRows.forEach((row: Contrato) => {
-        console.log(new JsonPipe().transform(row));
+        selectedRows.forEach((row: Contrato) => {
+          console.log(new JsonPipe().transform(row));
       });
     } else {
       console.log('No hay filas seleccionadas');
@@ -81,5 +81,42 @@ export class ContCompListaContratoComponent implements AfterViewInit {
     this.contratosService.contratoValue = contrato;
     this.router.navigate(['/shared/contrato/cambiar']);
   }
+
+
+  SelecionaOperadora( ev: number) {
+    console.log(ev);
+  }
+
+
+  public operadoras: Operadora[] = [
+    {
+      idOperadora: 111,
+      nombre: 'movistar',
+      ruc: '12345378902',
+      telefono1: '097864587',
+      telefono2: '0478921',
+      direccion: 'av Bolivariana yRosa blANCA',
+      responsable: {
+        nombres: 'Carlos Araque',
+        apellidos: '',
+        email: '',
+        telefono: ''
+      }
+    },
+    {
+      idOperadora: 222,
+      nombre: 'Porta',
+      ruc: '12345378902',
+      telefono1: '097864587',
+      telefono2: '0478921',
+      direccion: 'av Bolivariana yRosa blANCA',
+      responsable: {
+        nombres: 'Marco Solis',
+        apellidos: '',
+        email: '',
+        telefono: ''
+      }
+    }
+  ];
 
 }

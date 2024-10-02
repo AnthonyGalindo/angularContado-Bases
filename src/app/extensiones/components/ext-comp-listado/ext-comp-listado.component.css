@@ -12,3 +12,17 @@
   th, td {
     padding: 0.6rem ;
   }
+
+  .btnp{
+    padding: 0.3rem;
+    background-color: #235FBF;
+    text-decoration: none;
+    border-radius: 0.7rem;
+    color: #ffffff;
+
+  }
+
+  .btnp:hover{
+    padding: 0.4rem;
+    background-color: #0260f8;
+  }

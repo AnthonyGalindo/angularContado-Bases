@@ -21,6 +21,12 @@ font-family: 'Times New Roman', Times, serif;
 
 .btn-color {
     background-color: #235FBF;
+    color: rgba(247, 247, 247, 0.96);
+}
+
+.btn-naranja{
+  background-color: #B6CAEA;
+
 }
 
 mat-checkbox{
@@ -36,10 +42,10 @@ mat-checkbox{
   h2{
     font-size: 1.4rem;
     font-weight: 600;
-   
+
   }
 
-  
+
   @media only screen and (max-width: 768px) {
     /* Ajustes para pantallas pequeñas */
     .mat-header-cell, .mat-cell {

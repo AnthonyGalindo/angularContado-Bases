@@ -21,7 +21,7 @@ ngOnInit(): void {
 }
 
 dataSource = new MatTableDataSource<any>();
-displayedColumns: string[] = ['id','cantidad', 'cantidad_v', 'cantidadTotal', 'v_unitario','total_mensual', 'total_anual', 'autorizacion','fecha','acciones'];
+displayedColumns: string[] = ['id','cantidad','cantidadTotal', 'v_unitario','total_mensual', 'total_anual', 'autorizacion','fecha','acciones'];
 
 public aplicarFiltro(event: Event) {
   const filterValue = (event.target as HTMLInputElement).value;
